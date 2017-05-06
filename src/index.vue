@@ -1,7 +1,7 @@
 <template>
   <div class="container">
       <image src="http://ata2-img.cn-hangzhou.img-pub.aliyun-inc.com/7d42775b8f0d0c86589082dc9ee179c2.png" class="bannar-image"/>
-      <text @click="changeMessage" class="message">{{ message }}</text>
+      <text @click="changeMessage" class="message">{{ message }} to back</text>
       <text class="quotes">{{ quotes }}</text>
   </div>
 </template>
