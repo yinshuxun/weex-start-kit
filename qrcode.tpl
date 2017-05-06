@@ -11,7 +11,7 @@
 </body>
 <script src="//unpkg.com/jr-qrcode"></script>
 <script>
-  var ip = '<%= process.env.IP %>:' + location.port
+  var ip = '0.0.0.0:' + location.port
   var link = 'http://' + ip + '/app.weex.js'
   var code = jrQrcode.getQrBase64(link);
   var a = document.getElementById('link')
