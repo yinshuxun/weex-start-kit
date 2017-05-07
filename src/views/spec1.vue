@@ -1,21 +1,25 @@
 <template>
     <div>
-        <div>this is template body spec1</div>
+        <text @click="changeMessage" class="message">{{ message }} </text>
     </div>
 </template>
 <style scoped>
-    body{
+    body {
         /*background-color:#ff0000;*/
     }
 </style>
 <script>
-    export default{
-        data(){
-            return{
-                msg:'hello vue'
-            }
-        },
-        components:{
-        }
-    }
+  export default{
+    data(){
+      return {
+        message: 'This is a weex text tag'
+      }
+    },
+    methods: {
+      changeMessage() {
+        this.message = 'You click it now!';
+      }
+    },
+    components: {}
+  }
 </script>

@@ -1,7 +1,9 @@
 <template>
     <div>
-        <div>this is template body</div>
-        <div @click="jump('spec1')">jump to spec1</div>
+        <text @click="jump('spec1')">jump to spec1</text>
+        <text @click="jump('video')">jump to video</text>
+        <text @click="jump('trans')">jump to transform</text>
+        <text @click="jump('slider')">jump to slider</text>
     </div>
 </template>
 <style scoped>
@@ -10,12 +12,6 @@
 </style>
 <script>
     export default{
-        data(){
-            return{
-                msg:'hello vue'
-            }
-        },
-        components:{
-        }
+
     }
 </script>
