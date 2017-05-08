@@ -5,7 +5,6 @@
         <!--<image src="http://ata2-img.cn-hangzhou.img-pub.aliyun-inc.com/7d42775b8f0d0c86589082dc9ee179c2.png"-->
                <!--class="bannar-image"/>-->
         <router-view style="flex:1"></router-view>
-
     </div>
 </template>
 
@@ -40,8 +39,7 @@
         font-size: 32px;
         color: #fff;
         line-height: 1.7;
-        background: #545454;
-        width: 100%;
+        background: grey;
     }
 </style>
 
