@@ -1,10 +1,11 @@
 <template>
-    <div class="container">
-        <text class="header">{{ quotes }}</text>
+    <div class="">
+        <!--<text class="header">{{ quotes }}</text>-->
+        <!--<text class="back" @click="jump('/')">back</text>-->
         <!--<image src="http://ata2-img.cn-hangzhou.img-pub.aliyun-inc.com/7d42775b8f0d0c86589082dc9ee179c2.png"-->
                <!--class="bannar-image"/>-->
         <router-view style="flex:1"></router-view>
-        <text class="back" @click="jump('/')">back</text>
+
     </div>
 </template>
 

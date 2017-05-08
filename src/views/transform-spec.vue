@@ -1,5 +1,6 @@
 <template>
     <div class="wrapper">
+        <text class="back" @click="jump('/')">back</text>
         <div ref="test" @click="move" class="box"></div>
     </div>
 </template>

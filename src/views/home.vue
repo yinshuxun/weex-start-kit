@@ -1,5 +1,6 @@
 <template>
     <div>
+        <text class="back" @click="jump('/')">back</text>
         <text @click="jump('spec1')">jump to spec1</text>
         <text @click="jump('video')">jump to video</text>
         <text @click="jump('trans')">jump to transform</text>
