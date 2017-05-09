@@ -1,6 +1,5 @@
 <template>
     <div>
-        <text class="back" @click="jump('/')">back</text>
         <text @click="changeMessage" class="message">{{ message }} </text>
     </div>
 </template>
