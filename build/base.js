@@ -1,6 +1,7 @@
 var resolve = require('path').resolve
 var webpack = require('webpack')
 var htmlWebpackPlugin = require('html-webpack-plugin')
+var vueConfig = require("./vue-loader.config")
 
 module.exports = function getBaseConfig(loader, isDev) {
     return {
@@ -20,7 +21,10 @@ module.exports = function getBaseConfig(loader, isDev) {
                     exclude: /node_modules/
                 }, {
                     test: /\.vue$/,
-                    loader: loader + '-loader'
+                    use: {
+                        loader:  loader + '-loader',
+                        options: vueConfig
+                    }
                 }
             ]
         },

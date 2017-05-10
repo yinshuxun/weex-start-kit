@@ -2,10 +2,6 @@
     <div>
         <header @distributeView="distributeView"></header>
         <component :is="curr"></component>
-        <!--<div class="search-area">-->
-            <!--<input class="input" type='text'/>-->
-            <!--<div class="fixed-button">search</div>-->
-        <!--</div>-->
     </div>
 </template>
 <style scoped>
@@ -28,13 +24,13 @@
 </style>
 <script>
     import Header from '../components/header.vue'
-    import spec1 from '../views/spec1.vue'
+    import back from '../views/back-spec.vue'
 
     export default{
         components: {Header},
         data(){
             return {
-                curr: spec1
+                curr: back
             }
         },
         methods: {

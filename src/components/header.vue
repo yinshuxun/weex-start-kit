@@ -1,23 +1,23 @@
 <template>
     <div class="header">
         <div class="nav">
-            <div v-for="m in modules" class="link" @click="distributeView(`/${m}`)">
-                <text class="title">{{m}}</text>
+            <div v-for="{name,path} in specs" class="link" @click="distributeView(`${path}`)">
+                <text class="title">{{name}}</text>
             </div>
         </div>
     </div>
 </template>
 <script>
+    import {mapGetters} from 'vuex'
+
     export default{
-        data(){
-            return {
-                modules: ['spec1', 'video', 'trans', 'slider', 'input']
-            }
-        },
         methods: {
             distributeView(router){
                 this.$emit('distributeView', router)
             }
+        },
+        computed: {
+            ...mapGetters(['specs'])
         }
     }
 

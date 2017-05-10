@@ -1,9 +1,5 @@
 <template>
     <div class="">
-        <!--<text class="header">{{ quotes }}</text>-->
-        <!--<text class="back" @click="jump('/')">back</text>-->
-        <!--<image src="http://ata2-img.cn-hangzhou.img-pub.aliyun-inc.com/7d42775b8f0d0c86589082dc9ee179c2.png"-->
-               <!--class="bannar-image"/>-->
         <router-view style="flex:1"></router-view>
     </div>
 </template>
@@ -35,7 +31,7 @@
         width: 100%;
     }
 
-    .back{
+    .back {
         font-size: 32px;
         color: #fff;
         line-height: 1.7;
@@ -44,17 +40,17 @@
 </style>
 
 <script>
-  export default {
-    data() {
-      return {
-        message: 'This is a weex text tag',
-        quotes: 'Header'
-      };
-    },
-    methods: {
-      changeMessage() {
-        this.message = 'You click it now!';
-      }
+    export default {
+        data() {
+            return {
+                message: 'This is a weex text tag',
+                quotes: 'Header'
+            };
+        },
+        methods: {
+            changeMessage() {
+                this.message = 'You click it now!';
+            }
+        }
     }
-  }
 </script>
