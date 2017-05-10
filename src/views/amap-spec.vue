@@ -22,7 +22,7 @@
 </style>
 
 <script>
-  import weexAmap from '../../plugins/weex-amap/js/weex-amap.vue';
+//  import weexAmap from '../../plugins/weex-amap/js/weex-amap.vue';
 
   export default{
     data(){
@@ -35,7 +35,7 @@
       }
     },
     components: {
-      weexAmap
+//      weexAmap
     }
   }
 </script>

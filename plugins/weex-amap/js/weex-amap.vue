@@ -1,6 +1,6 @@
 <template>
-  <el-amap :vid="'amap-vue'" :center="center" :zoom="zoom">
-  </el-amap>
+    <el-amap :vid="'amap-vue'" :center="center" :zoom="zoom">
+    </el-amap>
 </template>
 
 <style>
@@ -9,7 +9,7 @@
 
 <script>
 
- import weexMap from 'vue-amap';
+  import weexMap from 'vue-amap';
   Vue.use(weexMap);
   Vue.use(weexMap);
   weexMap.initAMapApiLoader({
@@ -19,7 +19,7 @@
 
   export default {
     props: {
-      center:{
+      center: {
         type: Array,
       },
       zoom: {
@@ -40,9 +40,7 @@
     },
 
     data() {
-      return {
-
-      }
+      return {}
     },
 
     methods: {

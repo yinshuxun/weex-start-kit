@@ -1,7 +1,7 @@
 <template lang="pug">
     <div>
         <div>
-            <text @click="imgOpen" class="btn" >open img11</text>
+            <text @click="imgOpen" class="btn">open img11</text>
         </div>
     </div>
 </template>
@@ -9,6 +9,7 @@
     body {
         /*background-color:#ff0000;*/
     }
+
     .btn {
         text-align: center;
         color: #ffffff;
@@ -53,8 +54,11 @@
         this.message = 'You click it now!';
       },
       imgOpen(){
-        console.log(111)
-        Nat.call('415-736-0000')
+        console.log(Nat)
+        Nat.camera.captureImage((err, ret) => {
+          console.log('Path: ', ret.path)
+        })
+
       }
     },
     components: {}
