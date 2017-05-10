@@ -1,7 +1,6 @@
-<template>
-    <div class="">
-        <router-view style="flex:1"></router-view>
-    </div>
+<template lang="pug">
+    div
+        router-view
 </template>
 
 <style>

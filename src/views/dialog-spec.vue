@@ -1,15 +1,15 @@
 <template>
     <div>
         <div>
-            <text class="btn" :click="openDialog">Show Dialog</text>
+            <text class="btn" @click="openDialog">Show Dialog</text>
         </div>
 
-        <div id="dialog" class="dialog" :show="isShowDialog">
-            <div class="dialog-backdrop" :click="closeDialog"></div>
+        <div id="dialog" class="dialog" v-if="isShowDialog">
+            <div class="dialog-backdrop" @click="closeDialog"></div>
             <div class="dialog-content">
                 <div class="dialog-header">
                     <text class="dialog-title">{{dialogTitle}}</text>
-                    <text class="close" :click="closeDialog">x</text>
+                    <text class="close" @click="closeDialog">x</text>
                 </div>
                 <div class="dialog-body">
                     <text>{{dialogBody}}</text>
@@ -81,7 +81,7 @@
             return {
                 isShowDialog: false,
                 dialogTitle: 'HELLO',
-                dialogBody: 'Weex is best!'
+                dialogBody: 'Weex dialog!'
             }
         },
         methods: {
@@ -90,7 +90,6 @@
             },
             closeDialog(e) {
                 this.isShowDialog = false
-                console.log(e)
             }
         }
     }
