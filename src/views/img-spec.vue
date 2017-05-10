@@ -1,6 +1,6 @@
-<template>
+<template lang="pug">
     <div>
-        <text @click="changeMessage" class="message">{{ message }} </text>
+        <input type="file"/>
     </div>
 </template>
 <style scoped>
