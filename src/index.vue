@@ -1,5 +1,5 @@
 <template lang="pug">
-    div
+    div {{header}}
         router-view
 </template>
 
@@ -43,7 +43,8 @@
         data() {
             return {
                 message: 'This is a weex text tag',
-                quotes: 'Header'
+                quotes: 'Header',
+                header: typeof __weex_define__
             };
         },
         methods: {

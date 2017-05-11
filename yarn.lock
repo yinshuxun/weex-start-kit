@@ -3311,7 +3311,7 @@ native-or-bluebird@1:
   version "1.2.0"
   resolved "http://registry.npm.taobao.org/native-or-bluebird/download/native-or-bluebird-1.2.0.tgz#39c47bfd7825d1fb9ffad32210ae25daadf101c9"
 
-natjs@^0.0.4:
+natjs@^0.1.4:
   version "0.0.4"
   resolved "http://registry.npm.taobao.org/natjs/download/natjs-0.0.4.tgz#85ba94214f2ad5877fddcca5005e249af38f6962"
 

@@ -1,7 +1,7 @@
 <template lang="pug">
     <div>
         <div>
-            <text @click="imgOpen" class="btn">open img11</text>
+            <text @click='imgOpen' class='btn' >open img11</text>
         </div>
     </div>
 </template>
@@ -41,7 +41,9 @@
     }
 </style>
 <script>
-  import Nat from 'natjs'
+  import Nat from 'natjs/lib/index.js'
+
+  console.log(Nat)
 
   export default{
     data(){
