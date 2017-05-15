@@ -1,8 +1,9 @@
 <template lang="pug">
-    div
-        router-view
+    <div @androidback="back">
+        <router-view style="flex:1"></router-view>
+    </div>
 </template>
-
+`
 <style>
     .container {
         display: flex;
@@ -39,17 +40,22 @@
 </style>
 
 <script>
-    export default {
-        data() {
-            return {
-                message: 'This is a weex text tag',
-                quotes: 'Header'
-            };
-        },
-        methods: {
-            changeMessage() {
-                this.message = 'You click it now!';
-            }
+  export default {
+    data() {
+      return {
+        message: 'This is a weex text tag',
+        quotes: 'Header'
+      };
+    },
+    methods: {
+      changeMessage() {
+        this.message = 'You click it now!';
+      },
+      methods: {
+        back: function () {
+          this.$router.back()
         }
+      }
     }
+  }
 </script>
