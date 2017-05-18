@@ -7,8 +7,12 @@ weex 是阿里出品的一个类似RN的框架，可以使用前端技术来开�
  weex、vue技术栈进行开发，实现同一份代码在 iOS、Android、Web 下都能完整地工作。
     
 ## 如何使用weex
-不得不提
+[weex-toolkit](https://weex.apache.org/cn/guide/tools/toolkit.html)是官方提供的一个脚手架命令行工具，
+你可以使用它进行 Weex 项目的创建，调试以及打包等功能。
 
+[weex-pack](https://github.com/weexteam/weex-pack)是新一代的weex应用工程和插件工程开发套件,目前weex-toolkit集成对weexpack的命令调用支持，你可以使用weex-toolkit命令来实现weexpack具备的功能。
+ 
+    统一使用weex命令进行使用
 ## weex基本工作原理
 ![weex-process](./weex-process.png)
     
