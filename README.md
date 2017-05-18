@@ -1,5 +1,7 @@
 # weex-vue-starter-kit
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/yinshuxun/weex-start-kit.svg)](https://greenkeeper.io/)
+
 > 吐槽：复制粘贴了一波 weex-toolkit 的配置
 
 ## 概述
