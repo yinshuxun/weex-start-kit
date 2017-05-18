@@ -12,7 +12,6 @@ weex 是阿里出品的一个类似RN的框架，可以使用前端技术来开�
 
 [weex-pack](https://github.com/weexteam/weex-pack)是新一代的weex应用工程和插件工程开发套件,目前weex-toolkit集成对weexpack的命令调用支持，你可以使用weex-toolkit命令来实现weexpack具备的功能。
  
-    统一使用weex命令进行使用
 ## weex基本工作原理
 ![weex-process](./weex-process.png)
     
@@ -26,7 +25,14 @@ weex 是阿里出品的一个类似RN的框架，可以使用前端技术来开�
     虚拟 DOM 树 ————— 客户端(Weex JS Framework) 
     ↓ (渲染) —————— 客户端(渲染引擎) 
     Native视图 ————— 客户端(渲染引擎) 
+
+## weex上手
+[weex中组件和模块 跟web标准的差别](https://weex.apache.org/cn/references/web-standards.html)
+
+[weex中使用vue全家桶的使用的差异性](https://weex.apache.org/cn/references/vue/difference-of-vuex.html)
     
 ## weex进阶
+
+
 
 [代码地址](https://github.com/yinshuxun/weex-start-kit)
