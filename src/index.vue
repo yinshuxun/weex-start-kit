@@ -1,5 +1,6 @@
-<template lang="pug">
-    <div @androidback="back">
+<template>
+    <div @androidback='back'>
+        <text>111</text>
         <router-view style="flex:1"></router-view>
     </div>
 </template>
@@ -41,33 +42,20 @@
 
 <script>
   export default {
-    data() {
-      return {
-        message: 'This is a weex text tag',
-        quotes: 'Header'
-      };
-    },
-    methods: {
-      changeMessage() {
-        this.message = 'You click it now!';
+      data() {
+          return {
+              message: 'This is a weex text tag',
+              quotes: 'Header',
+              header: typeof __weex_define__
+          };
       },
       methods: {
-        back: function () {
-          this.$router.back()
-        }
+          changeMessage() {
+              this.message = 'You click it now!';
+          },
+          back: function () {
+              this.$router.back()
+          }
       }
-    export default {
-        data() {
-            return {
-                message: 'This is a weex text tag',
-                quotes: 'Header',
-                header: typeof __weex_define__
-            };
-        },
-        methods: {
-            changeMessage() {
-                this.message = 'You click it now!';
-            }
-        }
-    }
+  }
 </script>

@@ -24,7 +24,7 @@
 </style>
 <script>
     import Header from '../components/header.vue'
-    import back from '../views/back-spec.vue'
+    import back from '../specs/back-spec.vue'
 
     export default{
         components: {Header},
