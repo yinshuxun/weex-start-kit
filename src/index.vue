@@ -1,6 +1,7 @@
 <template lang="pug">
-    div {{header}}
-        router-view
+    <div @androidback="back">
+        <router-view style="flex:1"></router-view>
+    </div>
 </template>
 
 <style>
@@ -39,6 +40,22 @@
 </style>
 
 <script>
+  export default {
+    data() {
+      return {
+        message: 'This is a weex text tag',
+        quotes: 'Header'
+      };
+    },
+    methods: {
+      changeMessage() {
+        this.message = 'You click it now!';
+      },
+      methods: {
+        back: function () {
+          this.$router.back()
+        }
+      }
     export default {
         data() {
             return {
