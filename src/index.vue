@@ -1,13 +1,11 @@
 <template>
     <div @androidback='back'>
-        <text>111</text>
         <router-view style="flex:1"></router-view>
     </div>
 </template>
 
 <style>
     .container {
-        display: flex;
         flex-direction: column;
         align-items: center;
     }
@@ -20,6 +18,7 @@
     .message {
         padding-top: 20px;
         padding-bottom: 40px;
+        display: flex;
         color: #0055dd;
         font-size: 28px;
     }
