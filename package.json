@@ -1,6 +1,6 @@
 {
   "name": "weex-start-kit",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "a weex project",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "keywords": [
     "weex"
   ],
-  "author": "fkysly@gmail.com",
+  "author": "shuxun.yin@gmail.com",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.22.1",
