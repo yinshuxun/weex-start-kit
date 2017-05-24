@@ -41,3 +41,6 @@ WXEnvironment对象，可以获取到当前设备的屏幕或者环境信息。(
 ## weex demo展示（大概10分钟）
 
 [demo演示地址](https://github.com/yinshuxun/weex-start-kit)
+
+## 踩过的坑
+1、组件不能使用header关键字

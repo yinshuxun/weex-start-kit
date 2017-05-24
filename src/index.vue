@@ -1,60 +1,26 @@
 <template>
-    <div @androidback='back'>
-        <router-view style="flex:1"></router-view>
+    <div>
+        <sideBar></sideBar>
+        <router-view></router-view>
+        <menu></menu>
     </div>
 </template>
-
 <style>
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
 
-    .bannar-image {
-        width: 200px;
-        height: 200px;
-    }
-
-    .message {
-        padding-top: 20px;
-        padding-bottom: 40px;
-        display: flex;
-        color: #0055dd;
-        font-size: 28px;
-    }
-
-    .header {
-        font-size: 32px;
-        color: #fff;
-        line-height: 1.7;
-        background: grey;
-        width: 100%;
-    }
-
-    .back {
-        font-size: 32px;
-        color: #fff;
-        line-height: 1.7;
-        background: grey;
-    }
 </style>
 
 <script>
+  import SideBar from './components/SideBar.vue'
+  import Menu from './components/Menu.vue'
   export default {
-      data() {
-          return {
-              message: 'This is a weex text tag',
-              quotes: 'Header',
-              header: typeof __weex_define__
-          };
-      },
-      methods: {
-          changeMessage() {
-              this.message = 'You click it now!';
-          },
-          back: function () {
-              this.$router.back()
-          }
+    data() {
+      return {
+        sideState: true
       }
+    },
+    components: {
+      SideBar,
+      Menu
+    }
   }
 </script>

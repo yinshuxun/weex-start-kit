@@ -14,57 +14,45 @@ const specs = getSpecs()
 
 
 const state = {
-    // TODO: 初始状态
-    count: 0,
-    steps: [],
-    loading: 'ing',
-    app: {},
-    specs
+  // TODO: 初始状态
+  loading: 'ing',
+  app: {},
+  sideState: true,
+  specs
 }
 
 const getters = {
-    count(state) {
-        return state.count
-    },
-    steps(state) {
-        return state.steps
-    },
-    loading(state) {
-        return state.loading
-    },
-    app(state){
-        return state.app
-    },
-    specs(state){
-        return state.specs
-    }
+  loading(state) {
+    return state.loading
+  },
+  app(state){
+    return state.app
+  },
+  specs(state){
+    return state.specs
+  },
+  sideState(state){
+    return state.sideState
+  }
 }
 
 export default new Vuex.Store({
-    state,
-    mutations: {
-        increment(state, num) {
-            state.count += num
-            state.steps.unshift('加上' + num)
-        },
-        reduce(state, num) {
-            state.count -= num
-            state.steps.unshift('减去' + num)
-        },
-        loading(state, lstate) {
-            state.loading = lstate
-        }
+  state,
+  mutations: {
+    loading(state, lstate) {
+      state.loading = lstate
     },
-    actions: {
-        increment({commit}, num) {
-            commit('increment', num)
-        },
-        reduce({commit}, num) {
-            commit('reduce', num)
-        },
-        loading({commit}, lstate) {
-            commit('loading', lstate)
-        }
+    changeSideState(state){
+      state.sideState = !state.sideState
+    }
+  },
+  actions: {
+    loading({commit}, lstate) {
+      commit('loading', lstate)
     },
-    getters
+    changeSideState({commit}){
+      commit('changeSideState')
+    }
+  },
+  getters
 })

@@ -15,4 +15,4 @@ new Vue({
   store
 })
 
-router.push('/')
+router.push('/home')
