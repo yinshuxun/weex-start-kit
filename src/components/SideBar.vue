@@ -14,7 +14,8 @@
         align-items: center;
         position: fixed;
         top: 0;
-        left: 0;
+        left: -200px;
+        z-index:999;
         height: 3000px;
         width: 200px;
         overflow: scroll;
@@ -58,7 +59,7 @@
         const sideBar = this.$refs.sideBar;
         animation.transition(sideBar, {
           styles: {
-            transform: `translate(${this.sideState ? '1px' : '-200px'})`
+            transform: `translate(${this.sideState ? '200px' : '-1px'},0)`
           },
           duration: 500,
           timingFunction: 'ease'

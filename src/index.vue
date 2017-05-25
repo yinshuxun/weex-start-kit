@@ -12,6 +12,7 @@
 <script>
   import SideBar from './components/SideBar.vue'
   import Menu from './components/Menu.vue'
+
   export default {
     data() {
       return {

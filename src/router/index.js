@@ -5,9 +5,10 @@ import {getSpecs} from '../common/utils'
 Vue.use(Router)
 
 export default new Router({
+    mode:'hash',
     routes: [
         ...getSpecs(),
         {path: '/hello', component: Hello},
-        {path: '/', redirect: '/hello'}
+        {path: '/', redirect: '/search'}
     ]
 })

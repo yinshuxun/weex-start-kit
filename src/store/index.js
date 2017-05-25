@@ -17,7 +17,7 @@ const state = {
   // TODO: 初始状态
   loading: 'ing',
   app: {},
-  sideState: true,
+  sideState: false,
   specs
 }
 
