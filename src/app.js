@@ -9,10 +9,10 @@ sync(store, router)
 Vue.mixin(mixins)
 
 new Vue({
-  el: '#root',
-  render: h => h(App),
-  router,
-  store
+    el: '#root',
+    render: h => h(App),
+    router,
+    store
 })
 
 router.push('/')

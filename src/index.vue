@@ -19,6 +19,13 @@
         sideState: true
       }
     },
+    mounted(){
+      const domModule = weex.requireModule('dom')
+      domModule.addRule('fontFace', {
+        'fontFamily': 'iconfont',
+        'src': "url(\'http://at.alicdn.com/t/font_h5e6t401ajhmpldi.ttf\')"
+      })
+    },
     components: {
       SideBar,
       Menu
