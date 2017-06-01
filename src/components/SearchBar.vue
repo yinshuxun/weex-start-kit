@@ -70,11 +70,6 @@
         color: #ffffff;
         align-items: center;
     }
-
-    .micon {
-        font-family: iconfont;
-        font-size: 40px;
-    }
 </style>
 <script>
   import {mapActions} from 'vuex'
