@@ -2,6 +2,9 @@
     <list class="pro-list" @loadmore="loadMore">
         <cell class="pro" v-for="{name,imgUrl,fobPrice,minOrder,componey} in proList">
             <image class="pro-img" :src="imgUrl"></image>
+            <div class="pro-detail">
+                <text>{{name}}</text>
+            </div>
         </cell>
     </list>
 </template>
@@ -23,6 +26,16 @@
     .pro-img {
         width: 300px;
         height: 300px;
+    }
+    .pro-detail{
+        overflow: hidden;
+        width: 380px;
+        margin-left: 20px;
+        lines:2;
+        text-overflow: ellipsis;
+        font-size: 28px;
+        line-height: 34px;
+        color: #222222;
     }
 </style>
 <script>
