@@ -2,7 +2,7 @@
     <div class="navigator">
         <div class="nav-left">
             <text class="nav-text">about</text>
-            <text class="nav-num"> {{num}} </text>
+            <text class="nav-num"> {{totalNum}} </text>
             <text class="nav-text">result</text>
         </div>
         <div class="nav-right">
@@ -58,9 +58,8 @@
 <script>
     export default{
         data(){
-            return {
-                num: 1655
-            }
-        }
+            return {}
+        },
+        props:["totalNum"]
     }
 </script>

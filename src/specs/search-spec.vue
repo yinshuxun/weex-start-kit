@@ -1,7 +1,8 @@
 <template>
     <div>
         <search-bar></search-bar>
-        <navigator-bar></navigator-bar>
+        <navigator-bar :totalNum="totalNum"></navigator-bar>
+        <pro-list :proList="proList"></pro-list>
     </div>
 </template>
 <style scoped>
@@ -10,42 +11,55 @@
 <script>
     import searchBar from "../components/SearchBar.vue"
     import navigatorBar from "../components/NavigatorBar.vue"
+    import proList from "../components/ProList.vue"
+    import ledJson from "../assets/simulation/led-json"
 
     var stream = weex.requireModule("stream")
 
     export default{
         data(){
             return {
-                num: 1655
+                totalNum: 1655,
+                proList:[]
             }
         },
         components: {
             searchBar,
-            navigatorBar
+            navigatorBar,
+            proList
         },
-        created(){
-            console.log(1)
-            this.getData(res => {
-                console.log(res.data)
+        created (){
+            const _self = this;
+            _self.search().then((res) => {
+                const {totalNum, dataList, totalPage} = res.data;
+                _self.totalNum = totalNum
+                _self.proList = dataList
             })
         },
         methods: {
-            getData(callback){
-                return stream.fetch({
+            search(){
+//                return stream.fetch({
 //                    method: 'GET',
 //                    type: 'json',
 //                    url: 'https://api.github.com/repos/alibaba/weex'
-
-                    method : "POST",
-                    headers :{"Content-Type": "application/json"},
-                    type: "json",
-                    url: "https://m.made-in-china.com/search/product",
-                    body: JSON.stringify({
-                        word: "led",
-                        page: "2"
-                    })
-
-                }, callback)
+//
+//                    method : "POST",
+//                    headers :{"Content-Type": "application/json"},
+//                    type: "json",
+//                    url: "http://m.made-in-china.com/search/product",
+//                    body: JSON.stringify({
+//                        word: "led",
+//                        page: "2"
+//                    })
+//
+//                }, callback)
+                return new Promise((succ, error) => {
+                    setTimeout(() => {
+                        succ({
+                            data: ledJson
+                        })
+                    }, 1000)
+                })
             }
         }
     }
