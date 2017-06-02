@@ -25,7 +25,7 @@
     "json-loader": "^0.5.4",
     "pug": "^2.0.0-rc.1",
     "url-loader": "^0.5.8",
-    "vue-loader": "^10.0.2",
+    "vue-loader": "^12.2.1",
     "vue-template-compiler": "^2.1.10",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0",
@@ -35,12 +35,12 @@
     "weex-vue-render": "^0.2"
   },
   "dependencies": {
-    "natjs": "^0.1.4",
+    "natjs": "^0.0.4",
     "vue": "^2.1.10",
-    "vue-amap": "^0.2.4",
+    "vue-amap": "^0.2.7",
     "vue-router": "^2.1.1",
     "vuex": "^2.1.1",
-    "vuex-router-sync": "^4.0.1",
+    "vuex-router-sync": "^4.1.3",
     "weex-components": "*",
     "weex-html5": "^0.3.2",
     "weex-vue-loader": "^0.2.12"
