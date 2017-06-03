@@ -6,7 +6,10 @@
     </div>
 </template>
 <style scoped>
-
+    .micon {
+        font-family: iconfont;
+        font-size: 40px;
+    }
 </style>
 <script>
     import searchBar from "../components/SearchBar.vue"
@@ -58,7 +61,7 @@
                         succ({
                             data: ledJson
                         })
-                    }, 1000)
+                    }, 300)
                 })
             }
         }

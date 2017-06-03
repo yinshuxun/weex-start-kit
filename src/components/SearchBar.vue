@@ -2,7 +2,7 @@
     <div class="search-wrap">
         <text class="back micon">&#xe675;</text>
         <div class="input-wrap">
-            <input class="input-search" type="text" @return="search" @input="input" @change="change"/>
+            <input class="input-search" type="text" @return="search" @input="input"/>
             <div class="input-btn" @click="search">
                 <text class="micon sea-icon">&#xe60d;</text>
             </div>
@@ -70,6 +70,10 @@
         color: #ffffff;
         align-items: center;
     }
+    .micon {
+        font-family: iconfont;
+        font-size: 40px;
+    }
 </style>
 <script>
   import {mapActions} from 'vuex'
@@ -84,10 +88,10 @@
       ...mapActions(['changeSideState']),
       input(e){
         this.searchWord = e.value
-      },
-      change(e){
+          console.log(e.value)
       },
       search(){
+          this.$modal.toast({message:this.searchWord})
         console.log(this.searchWord)
       }
     }

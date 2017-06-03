@@ -7,7 +7,7 @@
         </div>
         <div class="nav-right">
             <text class="micon nav-right-icon1">&#xe618;</text>
-            <text>|</text>
+            <!--<text>|</text>-->
             <text class="micon nav-right-icon2">&#xe642;</text>
         </div>
     </div>
@@ -17,7 +17,8 @@
         width: 750px;
         height: 96px;
         flex-direction: row;
-        padding: 0 20px;
+        padding-left:20px;
+        padding-right: 20px;
         border-bottom-style: solid;
         border-bottom-width: 1px;
         border-bottom-color: #dae0e5;
@@ -33,16 +34,21 @@
 
     .nav-right {
         flex-direction: row;
-        height: 48px;
+        height: 96px;
         text-align: right;
     }
 
     .nav-right-icon1 {
-        margin-right: 30px;
+        padding-right: 30px;
+        line-height: 96px;
+        border-right-style: solid;
+        border-right-width: 1px;
+        border-right-color: #dae0e5;
     }
 
     .nav-right-icon2 {
-        margin-left: 30px;
+        padding-left: 30px;
+        line-height: 96px;
     }
 
     .nav-text {
@@ -58,7 +64,9 @@
 <script>
     export default{
         data(){
-            return {}
+            return {
+                totalNum: 1655
+            }
         },
         props:["totalNum"]
     }
