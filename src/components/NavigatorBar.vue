@@ -65,7 +65,7 @@
     export default{
         data(){
             return {
-                totalNum: 1655
+//                totalNum: 1655
             }
         },
         props:["totalNum"]

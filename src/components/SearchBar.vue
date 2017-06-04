@@ -2,7 +2,7 @@
     <div class="search-wrap">
         <text class="back micon">&#xe675;</text>
         <div class="input-wrap">
-            <input class="input-search" type="text" @return="search" @input="input"/>
+            <input class="input-search" type="text" @click="getSuggestions" @return="search" @input="input"/>
             <div class="input-btn" @click="search">
                 <text class="micon sea-icon">&#xe60d;</text>
             </div>
@@ -46,7 +46,7 @@
         border-top-right-radius: 5px;
         border-bottom-right-radius: 6px;
         align-items: center;
-        justify-content:center;
+        justify-content: center;
         flex-direction: row;
     }
 
@@ -64,37 +64,55 @@
         text-align: center;
     }
 
-    .sea-icon{
+    .sea-icon {
         height: 40px;
         font-size: 32px;
         color: #ffffff;
         align-items: center;
     }
+
     .micon {
         font-family: iconfont;
         font-size: 40px;
     }
 </style>
 <script>
-  import {mapActions} from 'vuex'
+    import {mapActions} from 'vuex'
+    var stream = weex.requireModule("stream")
 
-  export default{
-    data(){
-      return {
-        searchWord: ""
-      }
-    },
-    methods: {
-      ...mapActions(['changeSideState']),
-      input(e){
-        this.searchWord = e.value
-          console.log(e.value)
-      },
-      search(){
-          this.$modal.toast({message:this.searchWord})
-        console.log(this.searchWord)
-      }
+    export default{
+        data(){
+            return {
+                searchWord: ""
+            }
+        },
+        created(){
+            const jsonpBack = "jsonpback"
+            return stream.fetch({
+                method: "get",
+                type: "jsonp",
+                url: `https://keywordsuggestions.made-in-china.com/suggest/getEnProdSuggest.do?count=10&kind=5&call=jsonp1&param=led`
+            }, res => {
+                console.log(res)
+            })
+        },
+        methods: {
+            ...mapActions(['changeSideState']),
+            input(e){
+                this.searchWord = e.value
+                console.log(e.value)
+            },
+            search(){
+                this.$modal.toast({message: this.searchWord})
+                console.log(this.searchWord)
+            },
+            getSuggestions(){
+            }
+        },
+        computed: {
+            params(){
+            }
+        }
     }
-  }
 
 </script>

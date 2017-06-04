@@ -38,23 +38,25 @@
                 _self.totalNum = totalNum
                 _self.proList = dataList
             })
+//            this.search(()=>{
+//                console.log(callback)
+//            })
         },
         methods: {
-            search(){
+            search(callback){
 //                return stream.fetch({
-//                    method: 'GET',
-//                    type: 'json',
-//                    url: 'https://api.github.com/repos/alibaba/weex'
+////                    method: 'GET',
+////                    type: 'json',
+////                    url: 'https://api.github.com/repos/alibaba/weex'
 //
 //                    method : "POST",
 //                    headers :{"Content-Type": "application/json"},
 //                    type: "json",
-//                    url: "http://m.made-in-china.com/search/product",
+//                    url: "https://m.made-in-china.com/search/product",
 //                    body: JSON.stringify({
 //                        word: "led",
 //                        page: "2"
 //                    })
-//
 //                }, callback)
                 return new Promise((succ, error) => {
                     setTimeout(() => {
