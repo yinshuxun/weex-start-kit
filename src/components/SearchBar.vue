@@ -8,7 +8,7 @@
             </div>
         </div>
         <text class="menu micon">&#xe603;</text>
-        <suggestion :suggestions="suggestions"></suggestion>
+        <suggestion :suggestions="suggestions" v-if="suggIsOpen"></suggestion>
     </div>
 </template>
 <style scoped>
@@ -81,7 +81,7 @@
     }
 </style>
 <script>
-    import {mapActions} from 'vuex'
+    import {mapActions,mapGetters} from 'vuex'
     import suggestion from '../components/Suggestion.vue'
     var stream = weex.requireModule("stream")
 
@@ -93,7 +93,7 @@
             }
         },
         methods: {
-            ...mapActions(['changeSideState']),
+            ...mapActions(['changeSideState','triggerSuggestions']),
             input(e){
                 console.log(this.searchWord)
             },
@@ -102,8 +102,9 @@
             },
             getSuggestions(jsonpCallback){
                 const _self = this
-                if (!this.searchWord)return
-                this.fetchSuggestion("iphone").then(res => {
+//                if (!this.searchWord)return
+                this.triggerSuggestions(true)
+                this.fetchSuggestion(this.searchWord || "led").then(res => {
                     console.log(res)
                     _self.suggestions = res
                 })
@@ -120,8 +121,7 @@
             }
         },
         computed: {
-            params(){
-            }
+            ...mapGetters(["suggIsOpen"])
         },
         components:{
             suggestion

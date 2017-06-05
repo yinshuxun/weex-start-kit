@@ -14,45 +14,69 @@ const specs = getSpecs()
 
 
 const state = {
-  // TODO: 初始状态
-  loading: 'ing',
-  app: {},
-  sideState: false,
-  specs
+    // TODO: 初始状态
+    loading: 'ing',
+    app: {},
+    sideState: false,
+    mask: false,
+    suggIsOpen: false,
+    specs
 }
 
 const getters = {
-  loading(state) {
-    return state.loading
-  },
-  app(state){
-    return state.app
-  },
-  specs(state){
-    return state.specs
-  },
-  sideState(state){
-    return state.sideState
-  }
+    loading(state) {
+        return state.loading
+    },
+    app(state){
+        return state.app
+    },
+    specs(state){
+        return state.specs
+    },
+    sideState(state){
+        return state.sideState
+    },
+    mask(state){
+        return state.mask
+    },
+    suggIsOpen(state){
+        return state.suggIsOpen
+    }
 }
 
 export default new Vuex.Store({
-  state,
-  mutations: {
-    loading(state, lstate) {
-      state.loading = lstate
+    state,
+    mutations: {
+        loading(state, lstate) {
+            state.loading = lstate
+        },
+        changeSideState(state){
+            state.sideState = !state.sideState
+        },
+        triggerMask(state, type){
+            state.mask = type
+            if(!type){
+                state.suggIsOpen = false
+            }
+        },
+        triggerSuggestions(state,type){
+            state.mask = type
+            state.suggIsOpen = type
+        }
     },
-    changeSideState(state){
-      state.sideState = !state.sideState
-    }
-  },
-  actions: {
-    loading({commit}, lstate) {
-      commit('loading', lstate)
+    actions: {
+        loading({commit}, lstate) {
+            commit('loading', lstate)
+        },
+        changeSideState({commit}){
+            commit('changeSideState')
+        },
+        triggerMask({commit}, type){
+            commit("triggerMask", type)
+        },
+        triggerSuggestions({commit}, type){
+            commit("triggerSuggestions", type)
+        }
     },
-    changeSideState({commit}){
-      commit('changeSideState')
-    }
-  },
-  getters
+    getters
 })

@@ -3,6 +3,7 @@
         <div class="place-blank"></div>
         <navigator-bar :totalNum="totalNum"></navigator-bar>
         <pro-list :proList="proList"></pro-list>
+        <mask></mask>
         <search-bar></search-bar>
     </div>
 </template>
@@ -19,8 +20,8 @@
     import searchBar from "../components/SearchBar.vue"
     import navigatorBar from "../components/NavigatorBar.vue"
     import proList from "../components/ProList.vue"
+    import mask from "../components/Mask.vue"
     import ledJson from "../assets/simulation/led-json"
-
     var stream = weex.requireModule("stream")
 
     export default{
@@ -33,7 +34,8 @@
         components: {
             searchBar,
             navigatorBar,
-            proList
+            proList,
+            mask
         },
         created (){
             const _self = this;
@@ -42,9 +44,6 @@
                 _self.totalNum = totalNum
                 _self.proList = dataList
             })
-//            this.search(()=>{
-//                console.log(callback)
-//            })
         },
         methods: {
             search(callback){
