@@ -87,13 +87,13 @@
             }
         },
         created(){
-            const jsonpBack = "jsonpback"
+            window.jsonp1 = (res)=>{
+                console.log(res)
+            }
             return stream.fetch({
                 method: "get",
                 type: "jsonp",
                 url: `https://keywordsuggestions.made-in-china.com/suggest/getEnProdSuggest.do?count=10&kind=5&call=jsonp1&param=led`
-            }, res => {
-                console.log(res)
             })
         },
         methods: {
