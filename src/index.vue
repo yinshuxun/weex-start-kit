@@ -3,6 +3,7 @@
         <sideBar></sideBar>
         <router-view></router-view>
         <menu></menu>
+        <div class="mask"></div>
     </div>
 </template>
 <style>

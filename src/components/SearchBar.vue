@@ -2,16 +2,19 @@
     <div class="search-wrap">
         <text class="back micon">&#xe675;</text>
         <div class="input-wrap">
-            <input class="input-search" type="text" @click="getSuggestions" @return="search" @input="input"/>
+            <input class="input-search" type="text" v-model="searchWord" @input="input" @click="getSuggestions" @return="search"/>
             <div class="input-btn" @click="search">
                 <text class="micon sea-icon">&#xe60d;</text>
             </div>
         </div>
         <text class="menu micon">&#xe603;</text>
+        <suggestion :suggestions="suggestions"></suggestion>
     </div>
 </template>
 <style scoped>
     .search-wrap {
+        position: fixed;
+        top:0;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
@@ -19,6 +22,7 @@
         border-bottom-style: solid;
         border-bottom-width: 1px;
         border-bottom-color: #dae0e5;
+        background-color: #fff;
     }
 
     .input-wrap {
@@ -78,40 +82,49 @@
 </style>
 <script>
     import {mapActions} from 'vuex'
+    import suggestion from '../components/Suggestion.vue'
     var stream = weex.requireModule("stream")
 
     export default{
         data(){
             return {
-                searchWord: ""
+                searchWord: "",
+                suggestions:[]
             }
-        },
-        created(){
-            window.jsonp1 = (res)=>{
-                console.log(res)
-            }
-            return stream.fetch({
-                method: "get",
-                type: "jsonp",
-                url: `https://keywordsuggestions.made-in-china.com/suggest/getEnProdSuggest.do?count=10&kind=5&call=jsonp1&param=led`
-            })
         },
         methods: {
             ...mapActions(['changeSideState']),
             input(e){
-                this.searchWord = e.value
-                console.log(e.value)
+                console.log(this.searchWord)
             },
             search(){
                 this.$modal.toast({message: this.searchWord})
-                console.log(this.searchWord)
             },
-            getSuggestions(){
+            getSuggestions(jsonpCallback){
+                const _self = this
+                if (!this.searchWord)return
+                this.fetchSuggestion("iphone").then(res => {
+                    console.log(res)
+                    _self.suggestions = res
+                })
+            },
+            fetchSuggestion(word = "led"){
+                return new Promise((succ, error) => {
+                    window.jsonp1 = succ;
+                    stream.fetch({
+                        method: "get",
+                        type: "jsonp",
+                        url: `https://keywordsuggestions.made-in-china.com/suggest/getEnProdSuggest.do?count=10&kind=5&call=jsonp1&param=${word}`
+                    })
+                })
             }
         },
         computed: {
             params(){
             }
+        },
+        components:{
+            suggestion
         }
     }
 

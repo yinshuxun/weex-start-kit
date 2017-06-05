@@ -1,14 +1,18 @@
 <template>
     <div>
-        <search-bar></search-bar>
+        <div class="place-blank"></div>
         <navigator-bar :totalNum="totalNum"></navigator-bar>
         <pro-list :proList="proList"></pro-list>
+        <search-bar></search-bar>
     </div>
 </template>
 <style scoped>
     .micon {
         font-family: iconfont;
         font-size: 40px;
+    }
+    .place-blank{
+        margin-top: 106px;
     }
 </style>
 <script>
