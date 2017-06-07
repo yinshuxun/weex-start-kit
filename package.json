@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack --config build/prod.js --progress",
     "dev": "node build/dev.js",
+    "ss": "babel-node ss",
     "debug": "weex-devtool"
   },
   "keywords": [
@@ -23,6 +24,9 @@
     "css-loader": "^0.26.1",
     "html-webpack-plugin": "^2.28.0",
     "json-loader": "^0.5.4",
+    "koa": "^2.2.0",
+    "koa-body": "^2.1.0",
+    "koa-cors": "^0.0.16",
     "pug": "^2.0.0-rc.1",
     "url-loader": "^0.5.8",
     "vue-loader": "^12.2.1",

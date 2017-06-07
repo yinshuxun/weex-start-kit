@@ -104,13 +104,12 @@
                 if (!this.searchWord)return
                 stream.fetch({
                     method: "post",
-                    url: "http://127.0.0.1:8082/search/product",
-//                    headers: {
-//                        "Content-Type": "application/x-www-form-urlencoded",
-//                        "X-Requested-With": 'XMLHttpRequest'
-//                    },
+                    url: "http://127.0.0.1:9000/search/product",
                     type: "json",
-                    body: `word=${this.searchWord}`
+                    "Content-Type": "application/json",
+                    body: JSON.stringify({
+                        word: this.searchWord
+                    })
                 }, res => {
                     console.log(res)
                 })

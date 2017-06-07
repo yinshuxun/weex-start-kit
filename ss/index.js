@@ -6,11 +6,6 @@ import koaBody from 'koa-body'
 import cors from 'koa-cors'
 
 const router = koaRouter()
-const kb = koaBody()
-
-const data = queryString.stringify({
-    word: "led"
-})
 
 const opt = {
     type: "json",
@@ -21,11 +16,12 @@ const opt = {
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         "X-Requested-With": 'XMLHttpRequest'
-    },
-    data
+    }
 }
 
-const _client = (body) => {
+
+
+const _client = (params) => {
     return new Promise((succ, reject) => {
         try {
             const req = hs.request(opt, res => {
@@ -37,7 +33,7 @@ const _client = (body) => {
                     succ(buffers)
                 })
             })
-            req.write(data)
+            req.write(queryString.stringify(params))
             req.end()
         } catch (e) {
             reject(e)
@@ -46,19 +42,17 @@ const _client = (body) => {
 }
 
 const app = new koa()
+app.use(cors())
+app.use(koaBody())
 
-router.post('/search/product', kb, async (ctx) => {
-    console.log(ctx.request.body)
-
-    await _client(ctx.request.body).then(res => {
-        ctx.body = JSON.parse(res.toString())
+app.use(async (ctx, context) => {
+    console.log(typeof ctx.request.body)
+    await _client(JSON.parse(ctx.request.body)).then(res => {
+        ctx.body = res.toString()
     })
 })
 
+app.listen(9000)
 
-app.use(router.routes())
-app.use(cors())
-app.listen(8082)
-
-console.log('the server is starting at port 8082')
+console.log('the server is starting at port 9000')
 
