@@ -103,7 +103,7 @@
                 this.$modal.toast({message: this.searchWord})
                 if (!this.searchWord)return
                 stream.fetch({
-                    method: "post",
+                    method: "POST",
                     url: "http://127.0.0.1:9000/search/product",
                     type: "json",
                     "Content-Type": "application/json",

@@ -19,8 +19,6 @@ const opt = {
     }
 }
 
-
-
 const _client = (params) => {
     return new Promise((succ, reject) => {
         try {
@@ -43,14 +41,16 @@ const _client = (params) => {
 
 const app = new koa()
 app.use(cors())
-app.use(koaBody())
 
-app.use(async (ctx, context) => {
-    console.log(typeof ctx.request.body)
+
+router.post("/search/product",koaBody(), async (ctx, context) => {
+    console.log(ctx)
     await _client(JSON.parse(ctx.request.body)).then(res => {
         ctx.body = res.toString()
     })
 })
+app.use(router.routes())
+
 
 app.listen(9000)
 
