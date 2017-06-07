@@ -2,7 +2,8 @@
     <div class="search-wrap">
         <text class="back micon">&#xe675;</text>
         <div class="input-wrap">
-            <input class="input-search" type="text" v-model="searchWord" @input="input" @click="getSuggestions" @return="search"/>
+            <input class="input-search" type="text" v-model="searchWord" @input="input" @click="getSuggestions"
+                   @return="search"/>
             <div class="input-btn" @click="search">
                 <text class="micon sea-icon">&#xe60d;</text>
             </div>
@@ -14,7 +15,7 @@
 <style scoped>
     .search-wrap {
         position: fixed;
-        top:0;
+        top: 0;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
@@ -81,7 +82,7 @@
     }
 </style>
 <script>
-    import {mapActions,mapGetters} from 'vuex'
+    import {mapActions, mapGetters} from 'vuex'
     import suggestion from '../components/Suggestion.vue'
     var stream = weex.requireModule("stream")
 
@@ -89,16 +90,30 @@
         data(){
             return {
                 searchWord: "",
-                suggestions:[]
+                suggestions: [],
+                currPage: 1
             }
         },
         methods: {
-            ...mapActions(['changeSideState','triggerSuggestions']),
+            ...mapActions(['changeSideState', 'triggerSuggestions']),
             input(e){
                 console.log(this.searchWord)
             },
             search(){
                 this.$modal.toast({message: this.searchWord})
+                if (!this.searchWord)return
+                stream.fetch({
+                    method: "post",
+                    url: "http://127.0.0.1:8082/search/product",
+//                    headers: {
+//                        "Content-Type": "application/x-www-form-urlencoded",
+//                        "X-Requested-With": 'XMLHttpRequest'
+//                    },
+                    type: "json",
+                    body: `word=${this.searchWord}`
+                }, res => {
+                    console.log(res)
+                })
             },
             getSuggestions(jsonpCallback){
                 const _self = this
@@ -123,7 +138,7 @@
         computed: {
             ...mapGetters(["suggIsOpen"])
         },
-        components:{
+        components: {
             suggestion
         }
     }
