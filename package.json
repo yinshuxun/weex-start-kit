@@ -25,7 +25,7 @@
     "html-webpack-plugin": "^2.28.0",
     "json-loader": "^0.5.4",
     "koa": "^2.2.0",
-    "koa-body": "^2.1.0",
+    "koa-bodyparser": "3",
     "koa-cors": "^0.0.16",
     "pug": "^2.0.0-rc.1",
     "url-loader": "^0.5.8",

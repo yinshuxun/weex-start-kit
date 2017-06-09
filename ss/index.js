@@ -41,15 +41,15 @@ const _client = (params) => {
 
 const app = new koa()
 app.use(cors())
+app.use(koaBody())
 
 
-router.post("/search/product",koaBody(), async (ctx, context) => {
-    console.log(ctx)
+app.use(async (ctx, context) => {
+    console.log(ctx.request.body)
     await _client(JSON.parse(ctx.request.body)).then(res => {
         ctx.body = res.toString()
     })
 })
-app.use(router.routes())
 
 
 app.listen(9000)
