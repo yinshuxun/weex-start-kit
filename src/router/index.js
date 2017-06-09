@@ -1,5 +1,6 @@
 import Router from 'vue-router'
 import Hello from '../views/hello.vue'
+import proDetail from '../views/pro-detail.vue'
 import {getSpecs} from '../common/utils'
 
 Vue.use(Router)
@@ -8,6 +9,7 @@ export default new Router({
     mode:'hash',
     routes: [
         ...getSpecs(),
+        {path: '/proDetail/:toUrl(\\d+)?', component: proDetail},
         {path: '/hello', component: Hello},
         {path: '/', redirect: '/search'}
     ]

@@ -23,12 +23,12 @@ const _client = (params) => {
     return new Promise((succ, reject) => {
         try {
             const req = hs.request(opt, res => {
-                const buffers = []
+                let buffers = ""
                 res.on('data', d => {
-                    buffers.push(d)
+                    buffers+=d
                 })
                 res.on('end', () => {
-                    succ(buffers)
+                    succ(buffers.toString())
                 })
             })
             req.write(queryString.stringify(params))
@@ -47,10 +47,9 @@ app.use(koaBody())
 app.use(async (ctx, context) => {
     console.log(ctx.request.body)
     await _client(JSON.parse(ctx.request.body)).then(res => {
-        ctx.body = res.toString()
+        ctx.body = res
     })
 })
-
 
 app.listen(9000)
 

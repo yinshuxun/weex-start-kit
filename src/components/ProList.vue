@@ -3,7 +3,7 @@
         <refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown" :display="refreshing ? 'show' : 'hide'">
             <text class="indicator">loading...</text>
         </refresh>
-        <cell class="pro" v-for="{name,imgUrl,fobPrice,minOrder,componey} in proList">
+        <cell class="pro" v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in proList" @click="jump(`proDetail`)">
             <image class="pro-img" :src="imgUrl"></image>
             <div class="pro-detail">
                 <text>{{name}}</text>

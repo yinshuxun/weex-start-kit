@@ -2,14 +2,14 @@
     <div class="search-wrap">
         <text class="back micon">&#xe675;</text>
         <div class="input-wrap">
-            <input class="input-search" type="text" v-model="searchWord" @input="input" @click="getSuggestions"
-                   @return="search"/>
+            <input class="input-search" type="text" v-model="searchWord" @input.native="searchInput" @click="getSuggestions"
+                   @keyup.enter="search"/>
             <div class="input-btn" @click="search">
                 <text class="micon sea-icon">&#xe60d;</text>
             </div>
         </div>
         <text class="menu micon">&#xe603;</text>
-        <suggestion :suggestions="suggestions" v-if="suggIsOpen"></suggestion>
+        <suggestion @suggSearch="suggSearch" :suggestions="suggestions" v-if="suggIsOpen"></suggestion>
     </div>
 </template>
 <style scoped>
@@ -95,12 +95,16 @@
             }
         },
         methods: {
-            ...mapActions(['changeSideState', 'triggerSuggestions']),
-            input(e){
-                console.log(this.searchWord)
+            ...mapActions(['changeSideState', 'triggerSuggestions', 'setSearchData']),
+            searchInput(e){
+                const _self  = this
+                this.timeoutId && clearTimeout(this.timeoutId)
+                this.timeoutId = setTimeout(() => {
+                    _self.getSuggestions()
+                },500)
             },
             search(){
-                this.$modal.toast({message: this.searchWord})
+                const _self = this
                 if (!this.searchWord)return
                 stream.fetch({
                     method: "POST",
@@ -111,10 +115,10 @@
                         word: this.searchWord
                     })
                 }, res => {
-                    console.log(res)
+                    res.ok && _self.setSearchData(res.data)
                 })
             },
-            getSuggestions(jsonpCallback){
+            getSuggestions(){
                 const _self = this
 //                if (!this.searchWord)return
                 this.triggerSuggestions(true)
@@ -132,10 +136,14 @@
                         url: `https://keywordsuggestions.made-in-china.com/suggest/getEnProdSuggest.do?count=10&kind=5&call=jsonp1&param=${word}`
                     })
                 })
+            },
+            suggSearch(value){
+                this.searchWord = value
+                this.search()
             }
         },
         computed: {
-            ...mapGetters(["suggIsOpen"])
+            ...mapGetters(["searchData", "suggIsOpen"])
         },
         components: {
             suggestion

@@ -1,8 +1,9 @@
 <template>
     <div class="suggestion">
-        <text class="sugg-word" v-for="{word},index in suggestions" v-if="index < 5">{{word}}</text>
+        <text @click="suggSearch" :value="word" class="sugg-word" v-for="{word},index in suggestions" v-if="index < 5" >{{word}}</text>
     </div>
 </template>
+
 <style scoped>
     .suggestion {
         position: absolute;
@@ -24,10 +25,19 @@
     }
 </style>
 <script>
+    import {mapActions} from 'vuex'
+
     export default{
         data(){
             return {}
         },
-        props: ['suggestions']
+        props: ['suggestions'],
+        methods:{
+            ...mapActions(['triggerSuggestions']),
+            suggSearch(e){
+                this.$emit("suggSearch",e.target.innerText)
+                this.triggerSuggestions(false)
+            }
+        }
     }
 </script>

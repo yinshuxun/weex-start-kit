@@ -12,7 +12,8 @@
         font-family: iconfont;
         font-size: 40px;
     }
-    .place-blank{
+
+    .place-blank {
         margin-top: 106px;
     }
 </style>
@@ -22,13 +23,14 @@
     import proList from "../components/ProList.vue"
     import mask from "../components/Mask.vue"
     import ledJson from "../assets/simulation/led-json"
+    import {mapGetters, mapActions} from "vuex"
     var stream = weex.requireModule("stream")
 
     export default{
         data(){
             return {
-                totalNum: 1655,
-                proList:[]
+                totalNum: "",
+                proList: ""
             }
         },
         components: {
@@ -39,36 +41,30 @@
         },
         created (){
             const _self = this;
-            _self.search().then((res) => {
-                const {totalNum, dataList, totalPage} = res.data;
-                _self.totalNum = totalNum
-                _self.proList = dataList
+            stream.fetch({
+                method: "POST",
+                url: "http://127.0.0.1:9000/search/product",
+                type: "json",
+                "Content-Type": "application/json",
+                body: JSON.stringify({
+                    word: "led"
+                })
+            }, res => {
+                res.ok && _self.setSearchData(res.data)
             })
         },
         methods: {
-            search(callback){
-//                return stream.fetch({
-////                    method: 'GET',
-////                    type: 'json',
-////                    url: 'https://api.github.com/repos/alibaba/weex'
-//
-//                    method : "POST",
-//                    headers :{"Content-Type": "application/json"},
-//                    type: "json",
-//                    url: "https://m.made-in-china.com/search/product",
-//                    body: JSON.stringify({
-//                        word: "led",
-//                        page: "2"
-//                    })
-//                }, callback)
-                return new Promise((succ, error) => {
-                    setTimeout(() => {
-                        succ({
-                            data: ledJson
-                        })
-                    }, 300)
-                })
+            ...mapActions(['setSearchData'])
+        },
+        watch: {
+            searchData(val){
+                const {totalNum, dataList, totalPage} = val;
+                this.totalNum = totalNum
+                this.proList = dataList
             }
+        },
+        computed: {
+            ...mapGetters(['searchData'])
         }
     }
 </script>

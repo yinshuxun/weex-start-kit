@@ -20,7 +20,8 @@ const state = {
     sideState: false,
     mask: false,
     suggIsOpen: false,
-    specs
+    specs,
+    searchData: {}
 }
 
 const getters = {
@@ -41,6 +42,9 @@ const getters = {
     },
     suggIsOpen(state){
         return state.suggIsOpen
+    },
+    searchData(state){
+        return state.searchData
     }
 }
 
@@ -55,13 +59,16 @@ export default new Vuex.Store({
         },
         triggerMask(state, type){
             state.mask = type
-            if(!type){
+            if (!type) {
                 state.suggIsOpen = false
             }
         },
-        triggerSuggestions(state,type){
+        triggerSuggestions(state, type){
             state.mask = type
             state.suggIsOpen = type
+        },
+        setSearchData(state, type){
+            state.searchData = type
         }
     },
     actions: {
@@ -76,6 +83,9 @@ export default new Vuex.Store({
         },
         triggerSuggestions({commit}, type){
             commit("triggerSuggestions", type)
+        },
+        setSearchData({commit}, type){
+            commit("setSearchData", type)
         }
     },
     getters
