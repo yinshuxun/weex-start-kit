@@ -1,9 +1,11 @@
 <template>
     <list class="pro-list" @loadmore="loadMore" loadmoreoffset="20" @scroll="scroll">
-        <refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown" :display="refreshing ? 'show' : 'hide'">
+        <refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown"
+                 :display="refreshing ? 'show' : 'hide'">
             <text class="indicator">loading...</text>
         </refresh>
-        <cell class="pro" v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in proList" @click="jump(`proDetail`)">
+        <cell class="pro" v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in proList"
+              @click="toDetail(url)">
             <image class="pro-img" :src="imgUrl"></image>
             <div class="pro-detail">
                 <text>{{name}}</text>
@@ -43,11 +45,13 @@
         line-height: 34px;
         color: #222222;
     }
-    .refresh{
+
+    .refresh {
         justify-content: center;
         background-color: #fff;
     }
-    .indicator{
+
+    .indicator {
         line-height: 40px;
         font-size: 24px;
     }
@@ -58,7 +62,7 @@
     export default{
         data(){
             return {
-                refreshing:false
+                refreshing: false
             }
         },
         props: ["proList"],
@@ -72,14 +76,17 @@
                 })
             },
             onrefresh(){
-                modal.toast({ message: 'refresh', duration: 1 })
+                modal.toast({message: 'refresh', duration: 1})
                 this.refreshing = true
                 setTimeout(() => {
                     this.refreshing = false
                 }, 300)
             },
             onpullingdown(){
-                modal.toast({ message: 'pulling down', duration: 1 })
+                modal.toast({message: 'pulling down', duration: 1})
+            },
+            toDetail(url){
+                this.$router.push({name: 'proDetail', params: {url: `https://m.made-in-china.com/${url}`}})
             }
         }
     }
