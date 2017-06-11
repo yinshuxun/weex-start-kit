@@ -17,6 +17,7 @@
     .pro-list {
         padding-left: 20px;
         padding-right: 20px;
+        height: 1132px;
     }
 
     .pro {
@@ -49,6 +50,7 @@
     .refresh {
         justify-content: center;
         background-color: #fff;
+        line-height: 34px;
     }
 
     .indicator {
@@ -57,37 +59,37 @@
     }
 </style>
 <script>
-    const modal = weex.requireModule("modal")
-
     export default{
         data(){
             return {
-                refreshing: false
+                refreshing: false,
+                a:[1,2,34,4]
             }
         },
         props: ["proList"],
         methods: {
             loadMore(){
-                modal.toast({message: 'loadmore', duration: 1})
+                this.$modal.toast({message: 'loadmore', duration: 1})
             },
             scroll(contentOffset){
-                modal.toast({
+                this.$modal.toast({
                     message: contentOffset
                 })
             },
             onrefresh(){
-                modal.toast({message: 'refresh', duration: 1})
                 this.refreshing = true
+                this.$modal.toast({message: 'refresh', duration: 1})
                 setTimeout(() => {
                     this.refreshing = false
-                }, 300)
+                }, 3000)
             },
             onpullingdown(){
-                modal.toast({message: 'pulling down', duration: 1})
+//                this.$modal.toast({message: 'pulling down', duration: 1})
             },
             toDetail(url){
                 this.$router.push({name: 'proDetail', params: {url: `https://m.made-in-china.com/${url}`}})
-            }
+            },
+
         }
     }
 </script>

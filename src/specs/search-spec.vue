@@ -43,14 +43,22 @@
             const _self = this;
             stream.fetch({
                 method: "POST",
-                url: "http://127.0.0.1:9000/search/product",
+                url: "http://192.168.31.174:9000/search/product",
                 type: "json",
                 "Content-Type": "application/json",
+                headers: {
+                    "Content-Type": "application/json"
+                },
                 body: JSON.stringify({
                     word: "led"
                 })
             }, res => {
+                !res.ok && _self.$modal.alert({
+                    message: `${res.statusText}::${res.data}`
+                })
                 res.ok && _self.setSearchData(res.data)
+
+
             })
         },
         methods: {

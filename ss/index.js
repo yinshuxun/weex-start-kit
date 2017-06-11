@@ -46,7 +46,7 @@ app.use(koaBody())
 
 app.use(async (ctx, context) => {
     console.log(ctx.request.body)
-    await _client(JSON.parse(ctx.request.body)).then(res => {
+    await _client(typeof ctx.request.body === 'object' ? ctx.request.body : JSON.parse(ctx.request.body)).then(res => {
         ctx.body = res
     })
 })
