@@ -4,11 +4,11 @@ import {getSpecs} from '../common/utils'
 
 Vue.use(Vuex)
 
-// const isProd = process.env.NODE_ENV === 'production'
-//
-// const app ={
-//   ctx :['http://local.xxbb.me:3000','http://xxbb.me:3000',][+isProd]
-// }
+const isProd = process.env.NODE_ENV === 'production'
+
+const app = {
+    ctx: [`http://${process.env.IP}:9000`,'http://m.made-in-china.com'][+isProd]
+}
 
 const specs = getSpecs()
 
@@ -16,7 +16,7 @@ const specs = getSpecs()
 const state = {
     // TODO: 初始状态
     loading: 'ing',
-    app: {},
+    app,
     sideState: false,
     mask: false,
     suggIsOpen: false,

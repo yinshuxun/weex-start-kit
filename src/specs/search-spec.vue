@@ -43,7 +43,7 @@
             const _self = this;
             stream.fetch({
                 method: "POST",
-                url: "http://192.168.31.174:9000/search/product",
+                url: `${this.app.ctx}/search/product`,
                 type: "json",
                 "Content-Type": "application/json",
                 headers: {
@@ -72,7 +72,7 @@
             }
         },
         computed: {
-            ...mapGetters(['searchData'])
+            ...mapGetters(['searchData', 'app'])
         }
     }
 </script>

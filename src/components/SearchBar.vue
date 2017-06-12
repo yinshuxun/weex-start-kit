@@ -2,7 +2,8 @@
     <div class="search-wrap">
         <text class="back micon">&#xe675;</text>
         <div class="input-wrap">
-            <input class="input-search" type="text" v-model="searchWord" @input.native="searchInput" @click="getSuggestions"
+            <input class="input-search" type="text" v-model="searchWord" @input.native="searchInput"
+                   @click="getSuggestions"
                    @keyup.enter="search"/>
             <div class="input-btn" @click="search">
                 <text class="micon sea-icon">&#xe60d;</text>
@@ -86,6 +87,13 @@
     import suggestion from '../components/Suggestion.vue'
     var stream = weex.requireModule("stream")
 
+    function define(name, value) {
+        Object.defineProperty(name, {
+            value: value,
+            enumerable: true
+        });
+    }
+
     export default{
         data(){
             return {
@@ -97,11 +105,11 @@
         methods: {
             ...mapActions(['changeSideState', 'triggerSuggestions', 'setSearchData']),
             searchInput(e){
-                const _self  = this
+                const _self = this
                 this.timeoutId && clearTimeout(this.timeoutId)
                 this.timeoutId = setTimeout(() => {
                     _self.getSuggestions()
-                },500)
+                }, 500)
             },
             search(){
                 const _self = this
@@ -122,8 +130,9 @@
                 const _self = this
 //                if (!this.searchWord)return
                 this.triggerSuggestions(true)
-                this.fetchSuggestion(this.searchWord || "led").then(res => {
-                    console.log(res)
+
+
+                this.fetchSuggestion(this.searchWord || 'led').then(res => {
                     _self.suggestions = res
                 })
             },
