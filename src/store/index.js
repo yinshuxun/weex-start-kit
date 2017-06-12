@@ -4,7 +4,7 @@ import {getSpecs} from '../common/utils'
 
 Vue.use(Vuex)
 
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production' 
 
 const app = {
     ctx: [`http://${process.env.IP}:9000`,'http://m.made-in-china.com'][+isProd]

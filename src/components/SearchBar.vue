@@ -85,14 +85,7 @@
 <script>
     import {mapActions, mapGetters} from 'vuex'
     import suggestion from '../components/Suggestion.vue'
-    var stream = weex.requireModule("stream")
-
-    function define(name, value) {
-        Object.defineProperty(name, {
-            value: value,
-            enumerable: true
-        });
-    }
+    const stream = weex.requireModule("stream")
 
     export default{
         data(){
@@ -116,7 +109,7 @@
                 if (!this.searchWord)return
                 stream.fetch({
                     method: "POST",
-                    url: "http://127.0.0.1:9000/search/product",
+                    url: `${_self.app.ctx}/search/product`,
                     type: "json",
                     "Content-Type": "application/json",
                     body: JSON.stringify({
@@ -131,18 +124,18 @@
 //                if (!this.searchWord)return
                 this.triggerSuggestions(true)
 
-
                 this.fetchSuggestion(this.searchWord || 'led').then(res => {
                     _self.suggestions = res
                 })
             },
             fetchSuggestion(word = "led"){
+                const _self = this
                 return new Promise((succ, error) => {
-                    window.jsonp1 = succ;
                     stream.fetch({
                         method: "get",
-                        type: "jsonp",
-                        url: `https://keywordsuggestions.made-in-china.com/suggest/getEnProdSuggest.do?count=10&kind=5&call=jsonp1&param=${word}`
+                        url: `${_self.app.ctx}/getSugg`
+                    }, res => {
+                        res.ok && succ(res.data)
                     })
                 })
             },
@@ -152,7 +145,7 @@
             }
         },
         computed: {
-            ...mapGetters(["searchData", "suggIsOpen"])
+            ...mapGetters(["searchData", "suggIsOpen", "app"])
         },
         components: {
             suggestion

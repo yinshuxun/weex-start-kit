@@ -1,4 +1,5 @@
 import hs from 'https'
+import h from 'http'
 import queryString from 'querystring'
 import koa from "koa"
 import koaRouter from 'koa-router'
@@ -19,19 +20,27 @@ const opt = {
     }
 }
 
-const _client = (params) => {
+const suggOpt = {
+    method: "GET",
+    type: "jsonp",
+    hostname: 'keywordsuggestions.made-in-china.com',
+    path: `/suggest/getEnProdSuggest.do?count=10&kind=5&call=jsonpCallback&param=led`,
+}
+
+
+const _client = (options, params) => {
     return new Promise((succ, reject) => {
         try {
-            const req = hs.request(opt, res => {
+            const req = hs.request(options, res => {
                 let buffers = ""
                 res.on('data', d => {
-                    buffers+=d
+                    buffers += d
                 })
                 res.on('end', () => {
                     succ(buffers.toString())
                 })
             })
-            req.write(queryString.stringify(params))
+            params && req.write(queryString.stringify(params))
             req.end()
         } catch (e) {
             reject(e)
@@ -45,10 +54,18 @@ app.use(koaBody())
 
 
 app.use(async (ctx, context) => {
-    console.log(ctx.request.body)
-    await _client(typeof ctx.request.body === 'object' ? ctx.request.body : JSON.parse(ctx.request.body)).then(res => {
-        ctx.body = res
-    })
+    console.log(ctx.request.url)
+    if(/getSugg/.exec(ctx.request.url)){
+        await _client(suggOpt).then(res => {
+            const suggs = res.replace(/^jsonpCallback\((.*)\)$/,"$1")
+            ctx.body = suggs
+        })
+    }else if(/search\/product/.exec(ctx.request.url)){
+        await _client(opt, typeof ctx.request.body === 'object' ? ctx.request.body : JSON.parse(ctx.request.body))
+        .then(res => {
+            ctx.body = res
+        })
+    }
 })
 
 app.listen(9000)
