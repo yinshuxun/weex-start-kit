@@ -991,6 +991,10 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
+bowser@^1.6.0:
+  version "1.7.0"
+  resolved "http://registry.npm.taobao.org/bowser/download/bowser-1.7.0.tgz#169de4018711f994242bff9a8009e77a1f35e003"
+
 brace-expansion@^1.0.0:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.6.tgz#7197d7eaa9b87e648390ea61fc66c84427420df9"
@@ -1615,6 +1619,12 @@ css-color-names@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
 
+css-in-js-utils@^1.0.3:
+  version "1.0.3"
+  resolved "http://registry.npm.taobao.org/css-in-js-utils/download/css-in-js-utils-1.0.3.tgz#9ac7e02f763cf85d94017666565ed68a5b5f3215"
+  dependencies:
+    hyphenate-style-name "^1.0.2"
+
 css-loader@^0.26.1:
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-0.26.1.tgz#2ba7f20131b93597496b3e9bb500785a49cd29ea"
@@ -1955,6 +1965,10 @@ enhanced-resolve@~0.9.0:
 entities@~1.1.1:
   version "1.1.1"
   resolved "http://registry.npm.taobao.org/entities/download/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
+
+envd@^0.1.1:
+  version "0.1.2"
+  resolved "http://registry.npm.taobao.org/envd/download/envd-0.1.2.tgz#6ded47181ba786e944c1362be410a493cd17a464"
 
 errno@^0.1.3:
   version "0.1.4"
@@ -2549,6 +2563,14 @@ https-browserify@0.0.1, https-browserify@~0.0.0:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
 
+httpurl@^0.1.1:
+  version "0.1.2"
+  resolved "http://registry.npm.taobao.org/httpurl/download/httpurl-0.1.2.tgz#3bd9c826829194b86df3118490f64c4f1954b790"
+
+hyphenate-style-name@^1.0.2:
+  version "1.0.2"
+  resolved "http://registry.npm.taobao.org/hyphenate-style-name/download/hyphenate-style-name-1.0.2.tgz#31160a36930adaf1fc04c6074f7eb41465d4ec4b"
+
 iconv-lite@0.4.13:
   version "0.4.13"
   resolved "http://registry.npm.taobao.org/iconv-lite/download/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
@@ -2601,6 +2623,13 @@ inline-source-map@~0.6.0:
   resolved "https://registry.yarnpkg.com/inline-source-map/-/inline-source-map-0.6.2.tgz#f9393471c18a79d1724f863fa38b586370ade2a5"
   dependencies:
     source-map "~0.5.3"
+
+inline-style-prefixer@^3.0.2:
+  version "3.0.6"
+  resolved "http://registry.npm.taobao.org/inline-style-prefixer/download/inline-style-prefixer-3.0.6.tgz#b27fe309b4168a31eaf38c8e8c60ab9e7c11731f"
+  dependencies:
+    bowser "^1.6.0"
+    css-in-js-utils "^1.0.3"
 
 insert-module-globals@^7.0.0:
   version "7.0.1"
@@ -4266,9 +4295,9 @@ qs@~6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.0.tgz#f403b264f23bc01228c74131b407f18d5ea5d442"
 
-query-string@^4.1.0:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/query-string/-/query-string-4.3.1.tgz#54baada6713eafc92be75c47a731f2ebd09cd11d"
+query-string@^4.1.0, query-string@^4.3.2:
+  version "4.3.4"
+  resolved "http://registry.npm.taobao.org/query-string/download/query-string-4.3.4.tgz#bbb693b9ca915c232515b228b1a02b609043dbeb"
   dependencies:
     object-assign "^4.1.0"
     strict-uri-encode "^1.0.0"
@@ -5059,6 +5088,15 @@ uglify-js@^2.6.1, uglify-js@^2.8.5, uglify-js@~2.8.22:
   optionalDependencies:
     uglify-to-browserify "~1.0.0"
 
+uglify-js@^2.8.27:
+  version "2.8.28"
+  resolved "http://registry.npm.taobao.org/uglify-js/download/uglify-js-2.8.28.tgz#e335032df9bb20dcb918f164589d5af47f38834a"
+  dependencies:
+    source-map "~0.5.1"
+    yargs "~3.10.0"
+  optionalDependencies:
+    uglify-to-browserify "~1.0.0"
+
 uglify-js@~2.7.3:
   version "2.7.5"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.7.5.tgz#4612c0c7baaee2ba7c487de4904ae122079f2ca8"
@@ -5213,22 +5251,18 @@ void-elements@^2.0.1:
   version "2.0.1"
   resolved "http://registry.npm.taobao.org/void-elements/download/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
 
-vue:
+vue, vue@^2.1.5:
   version "2.1.10"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.1.10.tgz#c9235ca48c7925137be5807832ac4e3ac180427b"
 
-vue-amap@^0.2.7:
-  version "0.2.7"
-  resolved "http://registry.npm.taobao.org/vue-amap/download/vue-amap-0.2.7.tgz#10b203d320a41c0659b0e136de4bb9104a6f18c7"
+vue-amap@^0.2.8:
+  version "0.2.8"
+  resolved "http://registry.npm.taobao.org/vue-amap/download/vue-amap-0.2.8.tgz#e84dc658a11459e2c6d478098532bc99ba1d04d6"
   dependencies:
     core-js "^2.4.1"
     uppercamelcase "^1.1.0"
 
-vue-hot-reload-api@^2.0.1:
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.0.8.tgz#b3ba6a9a443d561b14f2785c8ea056618cb2faa3"
-
-vue-hot-reload-api@^2.1.0:
+vue-hot-reload-api@^2.0.1, vue-hot-reload-api@^2.1.0:
   version "2.1.0"
   resolved "http://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.1.0.tgz#9ca58a6e0df9078554ce1708688b6578754d86de"
 
@@ -5274,13 +5308,20 @@ vue-template-compiler@^2.1.10:
     de-indent "^1.0.2"
     he "^1.1.0"
 
+vue-template-compiler@^2.3.4:
+  version "2.3.4"
+  resolved "http://registry.npm.taobao.org/vue-template-compiler/download/vue-template-compiler-2.3.4.tgz#5a88ac2c5e4d5d6218e6aa80e7e221fb7e67894c"
+  dependencies:
+    de-indent "^1.0.2"
+    he "^1.1.0"
+
 vue-template-es2015-compiler@^1.2.2:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.5.0.tgz#e4f672ab1718a3abf9171a080daefac31be117e1"
 
-vuex-router-sync@^4.1.3:
-  version "4.1.3"
-  resolved "http://registry.npm.taobao.org/vuex-router-sync/download/vuex-router-sync-4.1.3.tgz#f209ec3174de04179bfadd7994437e4c5a81c975"
+vuex-router-sync@^4.2.0:
+  version "4.2.0"
+  resolved "http://registry.npm.taobao.org/vuex-router-sync/download/vuex-router-sync-4.2.0.tgz#ebfc497d69b4018a9266a8f18b54bfca4d52125f"
 
 vuex@^2.1.1:
   version "2.3.1"
@@ -5353,7 +5394,7 @@ webpack-sources@^0.2.3:
     source-list-map "^1.1.1"
     source-map "~0.5.3"
 
-webpack@*, webpack@^2.2.1:
+webpack@*:
   version "2.5.0"
   resolved "http://registry.npm.taobao.org/webpack/download/webpack-2.5.0.tgz#5a17089f8d0e43442e606d6cf9b2a146c8ed9911"
   dependencies:
@@ -5399,6 +5440,32 @@ webpack@^1.13.1:
     watchpack "^0.2.1"
     webpack-core "~0.6.9"
 
+webpack@^2.6.1:
+  version "2.6.1"
+  resolved "http://registry.npm.taobao.org/webpack/download/webpack-2.6.1.tgz#2e0457f0abb1ac5df3ab106c69c672f236785f07"
+  dependencies:
+    acorn "^5.0.0"
+    acorn-dynamic-import "^2.0.0"
+    ajv "^4.7.0"
+    ajv-keywords "^1.1.1"
+    async "^2.1.2"
+    enhanced-resolve "^3.0.0"
+    interpret "^1.0.0"
+    json-loader "^0.5.4"
+    json5 "^0.5.1"
+    loader-runner "^2.3.0"
+    loader-utils "^0.2.16"
+    memory-fs "~0.4.1"
+    mkdirp "~0.5.0"
+    node-libs-browser "^2.0.0"
+    source-map "^0.5.3"
+    supports-color "^3.1.0"
+    tapable "~0.2.5"
+    uglify-js "^2.8.27"
+    watchpack "^1.3.1"
+    webpack-sources "^0.2.3"
+    yargs "^6.0.0"
+
 websocket-driver@>=0.5.1:
   version "0.6.5"
   resolved "http://registry.npm.taobao.org/websocket-driver/download/websocket-driver-0.6.5.tgz#5cb2556ceb85f4373c6d8238aa691c8454e13a36"
@@ -5442,29 +5509,11 @@ weex-devtool@^0.2.77:
     weex-loader "^0.4.2-beta"
     weex-transformer "^0.3.1"
 
-weex-html5@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/weex-html5/-/weex-html5-0.3.2.tgz#45bdf9937353c9d2ac22f183ce9a1d1749e238a3"
-
-weex-loader:
+weex-html5@^0.4.1:
   version "0.4.1"
-  resolved "https://registry.yarnpkg.com/weex-loader/-/weex-loader-0.4.1.tgz#14e4d478a4ab09d8012e00c2421491d3ff1e594f"
-  dependencies:
-    babel-plugin-transform-runtime "^6.9.0"
-    babel-preset-es2015 "^6.9.0"
-    babel-runtime "^6.9.2"
-    hash-sum "^1.0.2"
-    loader-utils "~0.2.14"
-    md5 "^2.1.0"
-    parse5 "^2.1.5"
-    source-map "^0.5.6"
-    weex-scripter "^0.1.4"
-    weex-styler "^0.1.2"
-    weex-templater "^0.3.0"
-    weex-transformer "^0.4.2"
-    weex-vue-loader "^0.2.1"
+  resolved "http://registry.npm.taobao.org/weex-html5/download/weex-html5-0.4.1.tgz#85c8f820ae217ec9550c359ffe6e6757bf22db57"
 
-weex-loader@^0.4.2-beta:
+weex-loader@^0.4.2-beta, weex-loader@^0.4.4:
   version "0.4.4"
   resolved "http://registry.npm.taobao.org/weex-loader/download/weex-loader-0.4.4.tgz#090966230af585f618d2df13bbdb4e31a2d6a4c2"
   dependencies:
@@ -5553,7 +5602,7 @@ weex-transformer@^0.4.2:
     weex-styler "~0.1.0"
     weex-templater "~0.3.0"
 
-weex-vue-loader@^0.2.1, weex-vue-loader@^0.2.11, weex-vue-loader@^0.2.12:
+weex-vue-loader@^0.2.11, weex-vue-loader@^0.2.12:
   version "0.2.12"
   resolved "http://registry.npm.taobao.org/weex-vue-loader/download/weex-vue-loader-0.2.12.tgz#a27b1c5fcd2c79f7f9e9cd3e86e9e0a2fdbd7384"
   dependencies:
@@ -5574,9 +5623,16 @@ weex-vue-loader@^0.2.1, weex-vue-loader@^0.2.11, weex-vue-loader@^0.2.12:
     weex-styler "^0.1.5"
     weex-template-compiler "^2.1.10-weex.2"
 
-weex-vue-render:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/weex-vue-render/-/weex-vue-render-0.1.8.tgz#454af0e330359fee61fa760f9054ee0d6f58fbd7"
+weex-vue-render@^0.11.49:
+  version "0.11.49"
+  resolved "http://registry.npm.taobao.org/weex-vue-render/download/weex-vue-render-0.11.49.tgz#244905b3c976d1fe11096d6f4a00c9d4437a971e"
+  dependencies:
+    core-js "^2.4.1"
+    envd "^0.1.1"
+    httpurl "^0.1.1"
+    inline-style-prefixer "^3.0.2"
+    query-string "^4.3.2"
+    vue "^2.1.5"
 
 whet.extend@~0.9.9:
   version "0.9.9"
