@@ -1,44 +1,45 @@
 <template>
-    <list class="pro-list" @loadmore="loadMore" loadmoreoffset="20" @scroll="scroll">
+    <waterfall class="pro-list" @loadmore="loadMore" loadmoreoffset="20" @scroll="scroll" column-width="300" column-count="2" column-gap="10">
         <refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown"
                  :display="refreshing ? 'show' : 'hide'">
             <text class="indicator">loading...</text>
         </refresh>
-        <cell class="pro" v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in proList"
-              @click="toDetail(url)">
+        <cell class="pro" v-for="{name,imgUrl,fobPrice,minOrder,componey,url},index in proList"
+              @click="toDetail(url)" v-if="index<2">
             <image class="pro-img" :src="imgUrl"></image>
             <div class="pro-detail">
                 <text>{{name}}</text>
             </div>
         </cell>
-    </list>
+    </waterfall>
 </template>
 <style scoped>
     .pro-list {
-        padding-left: 20px;
-        padding-right: 20px;
-        height: 1132px;
+        /*padding-left: 20px;*/
+        /*padding-right: 20px;*/
+        /*height: 1132px;*/
+        /*flex-direction: row;*/
     }
 
     .pro {
-        flex-direction: row;
+        flex-direction: column;
         padding-top: 20px;
         padding-bottom: 20px;
         border-bottom-style: solid;
         border-bottom-width: 1px;
         border-bottom-color: #ced3d9;
+        width: 300px;
     }
 
     .pro-img {
-        width: 300px;
-        height: 300px;
+        width: 200px;
+        height: 200px;
     }
 
     .pro-detail {
         height: 300px;
-
         overflow: hidden;
-        width: 380px;
+        width: 300px;
         margin-left: 20px;
         lines: 2;
         text-overflow: ellipsis;
@@ -76,14 +77,14 @@
                 })
             },
             onrefresh(){
+                if (this.refreshing)return
                 this.refreshing = true
-                this.$modal.toast({message: 'refresh', duration: 1})
                 setTimeout(() => {
                     this.refreshing = false
                 }, 3000)
             },
             onpullingdown(){
-//                this.$modal.toast({message: 'pulling down', duration: 1})
+
             },
             toDetail(url){
                 this.$router.push({name: 'proDetail', params: {url: `https://m.made-in-china.com/${url}`}})
