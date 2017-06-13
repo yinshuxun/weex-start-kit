@@ -1,5 +1,5 @@
 <template>
-    <waterfall class="pro-list" @loadmore="loadMore" loadmoreoffset="20" @scroll="scroll" column-width="300" column-count="2" column-gap="10">
+    <list class="pro-list" @loadmore="loadMore" loadmoreoffset="20" @scroll="scroll" column-width="300" column-count="2" column-gap="10">
         <refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown"
                  :display="refreshing ? 'show' : 'hide'">
             <text class="indicator">loading...</text>
@@ -11,7 +11,7 @@
                 <text>{{name}}</text>
             </div>
         </cell>
-    </waterfall>
+    </list>
 </template>
 <style scoped>
     .pro-list {

@@ -41,6 +41,10 @@ module.exports = function getBaseConfig(loader, isDev) {
                     use: 'json-loader'
                 },
                 {
+                    test: /\.css/,
+                    use: 'css-loader'
+                },
+                {
                     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                     use: {
                         loader: 'url-loader',
