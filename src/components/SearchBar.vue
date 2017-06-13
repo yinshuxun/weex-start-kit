@@ -133,9 +133,10 @@
                 return new Promise((succ, error) => {
                     stream.fetch({
                         method: "get",
+                        type: "json",
                         url: `${_self.app.ctx}/getSugg`
                     }, res => {
-                        res.ok && succ(res.data)
+                        res.ok && succ(res.data.suggs)
                     })
                 })
             },

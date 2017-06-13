@@ -37,7 +37,7 @@ const _client = (options, params) => {
                     buffers += d
                 })
                 res.on('end', () => {
-                    succ(buffers.toString())
+                    succ(buffers)
                 })
             })
             params && req.write(queryString.stringify(params))
@@ -55,12 +55,18 @@ app.use(koaBody())
 
 app.use(async (ctx, context) => {
     console.log(ctx.request.url)
-    if(/getSugg/.exec(ctx.request.url)){
+    if (/getSugg/.exec(ctx.request.url)) {
         await _client(suggOpt).then(res => {
-            const suggs = res.replace(/^jsonpCallback\((.*)\)$/,"$1")
-            ctx.body = suggs
+            // const suggs = res.replace(/^jsonpCallback\((.*)\)$/, "$1")
+            // console.log(suggs)
+            global.jsonpCallback = (res) => {
+                ctx.body = {
+                    suggs: res
+                }
+            }
+            Function.prototype.constructor(res)()
         })
-    }else if(/search\/product/.exec(ctx.request.url)){
+    } else if (/search\/product/.exec(ctx.request.url)) {
         await _client(opt, typeof ctx.request.body === 'object' ? ctx.request.body : JSON.parse(ctx.request.body))
         .then(res => {
             ctx.body = res
