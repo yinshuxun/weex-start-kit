@@ -62,14 +62,13 @@
     export default{
         data(){
             return {
-                refreshing: false,
-                a:[1,2,34,4]
+                refreshing: false
             }
         },
         props: ["proList"],
         methods: {
             loadMore(){
-                this.$modal.toast({message: 'loadmore', duration: 1})
+                this.$emit('loadMore')
             },
             scroll(contentOffset){
                 this.$modal.toast({

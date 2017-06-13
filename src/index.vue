@@ -5,17 +5,30 @@
             <router-view></router-view>
             <menu></menu>
         </div>
+        <div class="loading" v-if="loading==='on'"></div>
+    </div>
 </template>
 <style>
     .micon {
         font-family: iconfont;
         font-size: 40px;
     }
+
+    .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 750px;
+        height: 2000px;
+        background-color: #000;
+        opacity: .5;
+    }
 </style>
 
 <script>
     import SideBar from './components/SideBar.vue'
     import Menu from './components/Menu.vue'
+    import {mapGetters} from 'vuex'
     Vue.prototype.$modal = weex.requireModule("modal")
 
     export default {
@@ -36,6 +49,9 @@
         components: {
             SideBar,
             Menu
+        },
+        computed: {
+            ...mapGetters(['loading'])
         }
     }
 </script>

@@ -2,9 +2,9 @@
     <div>
         <div class="place-blank"></div>
         <navigator-bar :totalNum="totalNum"></navigator-bar>
-        <pro-list :proList="proList"></pro-list>
+        <pro-list :proList="proList" @loadMore="loadMore"></pro-list>
         <mask></mask>
-        <search-bar></search-bar>
+        <search-bar @triggerSearch="triggerSearch"></search-bar>
     </div>
 </template>
 <style scoped>
@@ -16,6 +16,7 @@
     .place-blank {
         margin-top: 106px;
     }
+
 </style>
 <script>
     import searchBar from "../components/SearchBar.vue"
@@ -30,7 +31,10 @@
         data(){
             return {
                 totalNum: "",
-                proList: ""
+                proList: "",
+                currPage: 1,
+                searchWord: "led",
+                showLoading:false
             }
         },
         components: {
@@ -41,28 +45,57 @@
         },
         created (){
             const _self = this;
-            stream.fetch({
-                method: "POST",
-                url: `${this.app.ctx}/search/product`,
-                type: "json",
-                "Content-Type": "application/json",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    word: "led"
-                })
-            }, res => {
-                !res.ok && _self.$modal.alert({
-                    message: `${res.statusText}::${res.data}`
-                })
-                res.ok && _self.setSearchData(res.data)
-
-
+            this.search({
+                word: 'led',
+                page: 1
+            }).then(ret => {
+                this.proList = ret.dataList
             })
         },
         methods: {
-            ...mapActions(['setSearchData'])
+            ...mapActions(['setSearchData','triggerLoading']),
+            search(params){
+                this.triggerLoading('on')
+                return new Promise((succ, error) => {
+                    stream.fetch({
+                        method: "POST",
+                        url: `${this.app.ctx}/search/product`,
+                        type: "json",
+                        "Content-Type": "application/json",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(params)
+                    }, res => {
+                        this.triggerLoading('off')
+                        !res.ok && _self.$modal.alert({
+                            message: `${res.statusText}::${res.data}`
+                        })
+                        res.ok && succ(res.data)
+                    })
+                })
+            },
+            loadMore(){
+                if (this.lmPending) return
+                const _self = this;
+                this.lmPending = true;
+                this.currPage += 1;
+                this.search({word: this.searchWord, page: this.currPage}).then(ret => {
+                    this.proList = _self.proList.concat(ret.dataList)
+                    this.lmPending = false
+                })
+
+            },
+            triggerSearch(word){
+                this.searchWord = word
+                this.page = 1
+                this.search({
+                    word,
+                    page: 1
+                }).then((ret) => {
+                    this.proList = ret.dataList
+                })
+            }
         },
         watch: {
             searchData(val){

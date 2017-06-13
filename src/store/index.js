@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import {getSpecs} from '../common/utils'
+const stream = weex.requireModule("stream")
 
 Vue.use(Vuex)
 
-const isProd = process.env.NODE_ENV === 'production' 
+const isProd = process.env.NODE_ENV === 'production'
 
 const app = {
-    ctx: [`http://${process.env.IP}:9000`,'http://m.made-in-china.com'][+isProd]
+    ctx: [`http://${process.env.IP}:9000`, 'http://m.made-in-china.com'][+isProd]
 }
 
 const specs = getSpecs()
@@ -15,7 +16,7 @@ const specs = getSpecs()
 
 const state = {
     // TODO: 初始状态
-    loading: 'ing',
+    loading: 'off',
     app,
     sideState: false,
     mask: false,
@@ -48,45 +49,49 @@ const getters = {
     }
 }
 
+const mutations = {
+    triggerLoading(state, lstate) {
+        state.loading = lstate
+    },
+    changeSideState(state){
+        state.sideState = !state.sideState
+    },
+    triggerMask(state, type){
+        state.mask = type
+        if (!type) {
+            state.suggIsOpen = false
+        }
+    },
+    triggerSuggestions(state, type){
+        state.mask = type
+        state.suggIsOpen = type
+    },
+    setSearchData(state, type){
+        state.searchData = type
+    }
+}
+
+const actions = {
+    triggerLoading({commit}, lstate) {
+        commit('triggerLoading', lstate)
+    },
+    changeSideState({commit}){
+        commit('changeSideState')
+    },
+    triggerMask({commit}, type){
+        commit("triggerMask", type)
+    },
+    triggerSuggestions({commit}, type){
+        commit("triggerSuggestions", type)
+    },
+    setSearchData({commit}, type){
+        commit("setSearchData", type)
+    }
+}
+
 export default new Vuex.Store({
     state,
-    mutations: {
-        loading(state, lstate) {
-            state.loading = lstate
-        },
-        changeSideState(state){
-            state.sideState = !state.sideState
-        },
-        triggerMask(state, type){
-            state.mask = type
-            if (!type) {
-                state.suggIsOpen = false
-            }
-        },
-        triggerSuggestions(state, type){
-            state.mask = type
-            state.suggIsOpen = type
-        },
-        setSearchData(state, type){
-            state.searchData = type
-        }
-    },
-    actions: {
-        loading({commit}, lstate) {
-            commit('loading', lstate)
-        },
-        changeSideState({commit}){
-            commit('changeSideState')
-        },
-        triggerMask({commit}, type){
-            commit("triggerMask", type)
-        },
-        triggerSuggestions({commit}, type){
-            commit("triggerSuggestions", type)
-        },
-        setSearchData({commit}, type){
-            commit("setSearchData", type)
-        }
-    },
+    mutations,
+    actions,
     getters
 })

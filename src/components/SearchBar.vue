@@ -90,9 +90,8 @@
     export default{
         data(){
             return {
-                searchWord: "",
+                searchWord: "led",
                 suggestions: [],
-                currPage: 1
             }
         },
         methods: {
@@ -105,36 +104,25 @@
                 }, 500)
             },
             search(){
-                const _self = this
-                if (!this.searchWord)return
-                stream.fetch({
-                    method: "POST",
-                    url: `${_self.app.ctx}/search/product`,
-                    type: "json",
-                    "Content-Type": "application/json",
-                    body: JSON.stringify({
-                        word: this.searchWord
-                    })
-                }, res => {
-                    res.ok && _self.setSearchData(res.data)
-                })
+                this.$emit("triggerSearch", this.searchWord)
+                this.triggerSuggestions(false)
             },
             getSuggestions(){
                 const _self = this
-//                if (!this.searchWord)return
+                if (!this.searchWord)return
                 this.triggerSuggestions(true)
 
-                this.fetchSuggestion(this.searchWord || 'led').then(res => {
+                this.fetchSuggestion(this.searchWord).then(res => {
                     _self.suggestions = res
                 })
             },
-            fetchSuggestion(word = "led"){
+            fetchSuggestion(word){
                 const _self = this
                 return new Promise((succ, error) => {
                     stream.fetch({
                         method: "get",
                         type: "json",
-                        url: `${_self.app.ctx}/getSugg`
+                        url: `${_self.app.ctx}/getSugg?word=${this.searchWord}`
                     }, res => {
                         res.ok && succ(res.data.suggs)
                     })
