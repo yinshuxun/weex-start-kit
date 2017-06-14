@@ -1,6 +1,6 @@
 <template>
     <div class="suggestion">
-        <text @click="suggSearch" class="sugg-word" v-for="{word},index in suggestions" v-if="index < 5">{{word}}</text>
+        <text @click="suggSearch(word)" :value="`${word}`" class="sugg-word" v-for="{word},index in suggestions" v-if="index < 5">{{word}}</text>
     </div>
 </template>
 
@@ -35,11 +35,8 @@
         props: ['suggestions'],
         methods: {
             ...mapActions(['triggerSuggestions']),
-            suggSearch(e){
-                this.$modal.alert({
-                    message: e.target.innerText + ""
-                })
-                this.$emit("suggSearch", e.target.innerText)
+            suggSearch(word){
+                this.$emit("suggSearch", word)
                 this.triggerSuggestions(false)
             }
         }
