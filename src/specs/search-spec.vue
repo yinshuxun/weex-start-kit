@@ -3,7 +3,6 @@
         <div class="place-blank"></div>
         <navigator-bar @changeGrid="changeGrid" :totalNum="totalNum"></navigator-bar>
         <pro-list :proList="proList" @loadMore="loadMore" :grid="grid"></pro-list>
-        <mask></mask>
         <search-bar @triggerSearch="triggerSearch"></search-bar>
     </div>
 </template>
@@ -22,7 +21,6 @@
     import searchBar from "../components/SearchBar.vue"
     import navigatorBar from "../components/NavigatorBar.vue"
     import proList from "../components/ProList.vue"
-    import mask from "../components/Mask.vue"
     import ledJson from "../assets/simulation/led-json"
     import {mapGetters, mapActions} from "vuex"
     var stream = weex.requireModule("stream")
@@ -33,7 +31,7 @@
                 totalNum: "",
                 proList: "",
                 currPage: 1,
-                searchWord: "led",
+                searchWord: "",
                 showLoading: false,
                 grid: 1
             }
@@ -42,7 +40,6 @@
             searchBar,
             navigatorBar,
             proList,
-            mask
         },
         created (){
             this.search({
@@ -100,13 +97,6 @@
                     this.proList = ret.dataList
                     this.totalNum = ret.totalNum
                 })
-            }
-        },
-        watch: {
-            searchData(val){
-                const {totalNum, dataList, totalPage} = val;
-                this.totalNum = totalNum
-                this.proList = dataList
             }
         },
         computed: {

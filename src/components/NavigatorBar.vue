@@ -76,7 +76,7 @@
         props:["totalNum"],
         methods:{
             changeGrid(){
-
+                this.$emit("changeGrid")
             }
         }
     }

@@ -9,5 +9,5 @@ export const getSpecs = () => {
         });
     }
 
-return requireAll(require.context("../../specs", true, /^\.\/.*spec\.vue/));
+    return requireAll(require.context("../../specs", true, /^\.\/.*spec\.vue/));
 }

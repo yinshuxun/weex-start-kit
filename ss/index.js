@@ -26,10 +26,9 @@ const getSuggOpts = (word = 'led') => {
         method: "GET",
         type: "jsonp",
         hostname: 'keywordsuggestions.made-in-china.com',
-        path: `/suggest/getEnProdSuggest.do?count=10&kind=5&call=jsonpCallback&param=${word}`,
+        path: `/suggest/getEnProdSuggest.do?count=10&kind=5&call=jsonpCallback&param=${encodeURIComponent(word)}`,
     }
 }
-
 
 const _client = (options, params) => {
     return new Promise((succ, reject) => {

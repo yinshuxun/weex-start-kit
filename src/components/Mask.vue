@@ -3,7 +3,7 @@
 </template>
 <style scoped>
     .mask {
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         width: 750px;
@@ -22,7 +22,7 @@
         computed: {
             ...mapGetters(["mask"])
         },
-        methods:{
+        methods: {
             ...mapActions(["triggerMask"]),
         }
     }

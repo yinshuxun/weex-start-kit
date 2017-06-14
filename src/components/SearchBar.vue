@@ -1,22 +1,31 @@
 <template>
     <div class="search-wrap">
-        <text class="back micon">&#xe675;</text>
-        <div class="input-wrap">
-            <input class="input-search" type="text" v-model="searchWord" @input.native="searchInput"
-                   @click="getSuggestions"
-                   @keyup.enter="search"/>
-            <div class="input-btn" @click="search">
-                <text class="micon sea-icon">&#xe60d;</text>
+        <mask @></mask>
+        <div class="search-bar-wrap">
+            <text class="back micon">&#xe675;</text>
+            <div class="input-wrap">
+                <input class="input-search" type="text"
+                       :value="searchWord"
+                       @input="onInput"
+                       @click="getSuggestions"
+                       @return="search"/>
+                <div class="input-btn" @click="search">
+                    <text class="micon sea-icon">&#xe60d;</text>
+                </div>
             </div>
+            <text class="menu micon">&#xe603;</text>
         </div>
-        <text class="menu micon">&#xe603;</text>
         <suggestion @suggSearch="suggSearch" :suggestions="suggestions" v-if="suggIsOpen"></suggestion>
     </div>
+
 </template>
 <style scoped>
     .search-wrap {
         position: fixed;
         top: 0;
+    }
+
+    .search-bar-wrap {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
@@ -85,6 +94,8 @@
 <script>
     import {mapActions, mapGetters} from 'vuex'
     import suggestion from '../components/Suggestion.vue'
+    import mask from "../components/Mask.vue"
+
     const stream = weex.requireModule("stream")
 
     export default{
@@ -96,20 +107,22 @@
         },
         methods: {
             ...mapActions(['changeSideState', 'triggerSuggestions', 'setSearchData']),
-            searchInput(e){
+            onInput(e){
                 const _self = this
+                this.searchWord = e.value
                 this.timeoutId && clearTimeout(this.timeoutId)
                 this.timeoutId = setTimeout(() => {
                     _self.getSuggestions()
-                }, 500)
+                }, 300)
             },
             search(){
                 this.$emit("triggerSearch", this.searchWord)
                 this.triggerSuggestions(false)
+                this.timeoutId && clearTimeout(this.timeoutId)
             },
             getSuggestions(){
                 const _self = this
-                if (!this.searchWord)return
+//                if (!this.searchWord)return
                 this.triggerSuggestions(true)
 
                 this.fetchSuggestion(this.searchWord).then(res => {
@@ -122,7 +135,7 @@
                     stream.fetch({
                         method: "get",
                         type: "json",
-                        url: `${_self.app.ctx}/getSugg?word=${this.searchWord}`
+                        url: `${_self.app.ctx}/getSugg?word=${encodeURIComponent(this.searchWord)}`
                     }, res => {
                         res.ok && succ(res.data.suggs)
                     })
@@ -137,7 +150,8 @@
             ...mapGetters(["searchData", "suggIsOpen", "app"])
         },
         components: {
-            suggestion
+            suggestion,
+            mask
         }
     }
 
