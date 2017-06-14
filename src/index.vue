@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="main-wrap">
         <div>
             <sideBar></sideBar>
             <router-view></router-view>
@@ -9,11 +9,6 @@
     </div>
 </template>
 <style>
-    .micon {
-        font-family: iconfont;
-        font-size: 40px;
-    }
-
     .loading {
         position: fixed;
         top: 0;
@@ -22,6 +17,10 @@
         height: 2000px;
         background-color: #000;
         opacity: .5;
+    }
+
+    body {
+        margin: 0;
     }
 
 </style>

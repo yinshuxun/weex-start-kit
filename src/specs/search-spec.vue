@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="place-blank"></div>
-        <navigator-bar :totalNum="totalNum"></navigator-bar>
-        <pro-list :proList="proList" @loadMore="loadMore"></pro-list>
+        <navigator-bar @changeGrid="changeGrid" :totalNum="totalNum"></navigator-bar>
+        <pro-list :proList="proList" @loadMore="loadMore" :grid="grid"></pro-list>
         <mask></mask>
         <search-bar @triggerSearch="triggerSearch"></search-bar>
     </div>
@@ -34,7 +34,8 @@
                 proList: "",
                 currPage: 1,
                 searchWord: "led",
-                showLoading:false
+                showLoading: false,
+                grid: 1
             }
         },
         components: {
@@ -44,16 +45,19 @@
             mask
         },
         created (){
-            const _self = this;
             this.search({
                 word: 'led',
                 page: 1
             }).then(ret => {
                 this.proList = ret.dataList
+                this.totalNum = ret.totalNum
             })
         },
         methods: {
-            ...mapActions(['setSearchData','triggerLoading']),
+            ...mapActions(['setSearchData', 'triggerLoading']),
+            changeGrid(){
+                this.grid = +!(this.grid - 1) + 1
+            },
             search(params){
                 this.triggerLoading('on')
                 return new Promise((succ, error) => {
@@ -94,6 +98,7 @@
                     page: 1
                 }).then((ret) => {
                     this.proList = ret.dataList
+                    this.totalNum = ret.totalNum
                 })
             }
         },

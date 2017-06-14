@@ -6,7 +6,7 @@
             <text class="nav-text">result</text>
         </div>
         <div class="nav-right">
-            <text class="micon nav-right-icon1">&#xe618;</text>
+            <text class="micon nav-right-icon1" @click="changeGrid">&#xe618;</text>
             <!--<text>|</text>-->
             <text class="micon nav-right-icon2">&#xe642;</text>
         </div>
@@ -60,6 +60,11 @@
         color: #e54545;
         font-size: 30px;
     }
+
+    .micon{
+        font-family: iconfont;
+        font-size: 40px;
+    }
 </style>
 <script>
     export default{
@@ -68,6 +73,11 @@
 //                totalNum: 1655
             }
         },
-        props:["totalNum"]
+        props:["totalNum"],
+        methods:{
+            changeGrid(){
+
+            }
+        }
     }
 </script>

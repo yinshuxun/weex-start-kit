@@ -57,7 +57,7 @@ app.use(koaBody())
 
 
 app.use(async (ctx, context) => {
-    console.log(ctx.request.url)
+    console.log(`${Date.now()}::${ctx.request.url}`)
     if (/getSugg/.exec(ctx.request.url)) {
         await _client(getSuggOpts(ctx.request.query.word)).then(res => {
             global.jsonpCallback = (res) => {
