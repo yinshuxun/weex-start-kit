@@ -4,7 +4,10 @@
             <sideBar></sideBar>
             <router-view></router-view>
             <menu></menu>
+            <text>1</text>
         </div>
+        <text>hello word</text>
+
         <div class="loading" v-if="loading==='on'"></div>
     </div>
 </template>
@@ -42,8 +45,7 @@
 
             domModule.addRule('fontFace', {
                 'fontFamily': 'iconfont',
-                'src': "url(\'http://at.alicdn.com/t/font_47qz8lcd2qkw3ik9.woff\')",
-                'src': "url(\'http://at.alicdn.com/t/font_47qz8lcd2qkw3ik9.ttf\')",
+                'src': "url(\'http://at.alicdn.com/t/font_47qz8lcd2qkw3ik9.woff\')"
             })
         },
         components: {
