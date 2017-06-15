@@ -43,4 +43,4 @@ WXEnvironment对象，可以获取到当前设备的屏幕或者环境信息。(
 [demo演示地址](https://github.com/yinshuxun/weex-start-kit)
 
 ## 踩过的坑
-1、组件不能使用header关键字
+1、iOS SDK中request的header没有设置content-type为json，只有在we文件中自己设置headers，SDK才会设置header， 希望后面可以修改一下， 保持request的header的content-type与type一致； ios发到后端，后端获取到的直接是json，而浏览器发到服务端 服务端接收到的是jsonstring
