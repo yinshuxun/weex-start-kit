@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config build/prod.js --progress",
+    "debug:ad": "zsh ./cli/debug-android.sh",
     "dev": "node build/dev.js",
     "ss": "babel-node ss",
     "debug": "weex-devtool"
