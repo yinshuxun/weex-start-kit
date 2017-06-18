@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import weexVueRenderer from 'weex-vue-render'
+import Vue from "vue"
+import weexVueRenderer from "weex-vue-render"
 weexVueRenderer.init(Vue)
 
 // import weexVueRenderer from 'weex-vue-render'
