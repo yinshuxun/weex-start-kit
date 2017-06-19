@@ -99,3 +99,6 @@ weexpack 是新一代的weex应用工程和插件工程开发套件，是基于w
 3、position：fix的元素层级有待确定
 
 4、vue的行为事件不能兼容，具体得按照weex文档
+
+
+5、如果定位元素超过容器边界，在 Android 下，超出部分将不可见，原因在于 Android 端元素 overflow 默认值为 hidden，但目前 Android 暂不支持设置 overflow: visible。
