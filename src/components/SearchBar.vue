@@ -1,6 +1,6 @@
 <template>
     <div class="search-wrap">
-        <mask @></mask>
+        <!--<mask></mask>-->
         <div class="search-bar-wrap">
             <text class="back micon">&#xe675;</text>
             <div class="input-wrap">
