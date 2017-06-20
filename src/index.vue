@@ -7,8 +7,7 @@
             <text>1</text>
         </div>
         <text>hello word</text>
-
-        <div class="loading" v-if="loading==='on'"></div>
+		<div class="loading" v-if="loading==='on'"></div>
     </div>
 </template>
 <style>

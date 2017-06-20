@@ -11,6 +11,6 @@ export default new Router({
 		...getSpecs(),
 		{ name: "proDetail", path: "/proDetail", component: proDetail },
 		{ path: "/hello", component: Hello },
-		{ path: "/", redirect: "/hello" }
+		{ path: "/", redirect: "/search" }
 	]
 })
