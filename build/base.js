@@ -8,7 +8,8 @@ module.exports = function getBaseConfig(loader, isDev) {
 	return {
 		output: {
 			path: resolve(__dirname, '../dist'),
-			filename: '[name].' + (loader === 'vue' ? 'web' : loader) + '.js'
+			filename: '[name].' + (loader === 'vue' ? 'web' : loader) + '.js',
+			chunkFilename: '[id].[chunkhash].js?'
 		},
 		externals: loader === 'weex' ? {
 			'vue': 'Vue',

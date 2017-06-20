@@ -5589,9 +5589,9 @@ vue-loader@^12.2.1:
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.2.2"
 
-vue-router@^2.1.1:
-  version "2.5.3"
-  resolved "http://registry.npm.taobao.org/vue-router/download/vue-router-2.5.3.tgz#073783f564b6aece6c8a59c63e298dc2aabfb51b"
+vue-router@^2.6.0:
+  version "2.6.0"
+  resolved "http://registry.npm.taobao.org/vue-router/download/vue-router-2.6.0.tgz#77b271f6e0ac6d57e8e556da58c6582fce0ab712"
 
 vue-style-loader@^1.0.0:
   version "1.0.0"
@@ -5899,9 +5899,9 @@ weex-vue-loader@^0.2.11, weex-vue-loader@^0.2.12:
     weex-styler "^0.1.5"
     weex-template-compiler "^2.1.10-weex.2"
 
-weex-vue-render@^0.11.49:
-  version "0.11.49"
-  resolved "http://registry.npm.taobao.org/weex-vue-render/download/weex-vue-render-0.11.49.tgz#244905b3c976d1fe11096d6f4a00c9d4437a971e"
+weex-vue-render@^0.11.50:
+  version "0.11.50"
+  resolved "http://registry.npm.taobao.org/weex-vue-render/download/weex-vue-render-0.11.50.tgz#75c38bd253af488e8371035b7fd6301af977640d"
   dependencies:
     core-js "^2.4.1"
     envd "^0.1.1"

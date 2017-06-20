@@ -9,8 +9,12 @@ export default new Router({
 	mode: "hash",
 	routes: [
 		...getSpecs(),
-		{ name: "proDetail", path: "/proDetail", component: proDetail },
-		{ path: "/hello", component: Hello },
-		{ path: "/", redirect: "/search" }
+		{name: "proDetail", path: "/proDetail", component: proDetail},
+		{
+			path: "/hello", component: (resolve) => {
+			require(['../views/hello.vue'], resolve)
+		}
+		},
+		{path: "/", redirect: "/search"}
 	]
 })

@@ -1,126 +1,129 @@
 <template>
-    <list class="pro-list" @loadmore="loadMore" loadmoreoffset="20" @scroll="scroll" column-width="300" column-count="2"
-          column-gap="10">
-        <refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown"
-                 :display="refreshing ? 'show' : 'hide'">
-            <text class="indicator">loading...</text>
-        </refresh>
-        <cell class="pro-wrap" v-for="p,i in proList" v-if="i % grid === 0 ">
-            <div v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in (i+1 === proList.length?[proList[i]]:[proList[i],proList[i+1]])"
-                 :class="['pro1',`pro${grid}`]">
-                <image class="pro-img" :src="imgUrl"></image>
-                <div :class="['pro-detail1',`pro-detail${grid}`]">
-                    <text>{{name}}</text>
-                </div>
-            </div>
-        </cell>
-    </list>
+	<list class="pro-list" @loadmore="loadMore" loadmoreoffset="20" @scroll="scroll" column-width="300" column-count="2"
+		  column-gap="10">
+		<refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown"
+				 :display="refreshing ? 'show' : 'hide'">
+			<text class="indicator">loading...</text>
+		</refresh>
+		<cell class="pro-wrap" v-for="p,i in proList" v-if="i % grid === 0 ">
+			<div
+				v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in (i+1 === proList.length?[proList[i]]:[proList[i],proList[i+1]])"
+				:class="['pro1',`pro${grid}`]">
+				<image class="pro-img" :src="imgUrl"></image>
+				<div :class="['pro-detail1',`pro-detail${grid}`]">
+					<text>{{name}}</text>
+				</div>
+			</div>
+		</cell>
+	</list>
 </template>
 <style scoped>
-    .pro-list {
-        /*padding-left: 20px;*/
-        /*padding-right: 20px;*/
-        height: 1132px;
-        flex-direction: row;
-    }
+	.pro-list {
+		/*padding-left: 20px;*/
+		/*padding-right: 20px;*/
+		/*height: 980px;*/
+		flex-direction: row;
+	}
 
-    .pro-wrap {
-        flex-direction: row;
-        width: 750px;
-    }
+	.pro-wrap {
+		flex-direction: row;
+		width: 750px;
+		flex:1;
+	}
 
-    .pro1 {
-        flex-direction: row;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        margin-left: 20px;
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-        border-bottom-color: #ced3d9;
-        border-right-width: 0;
-        width: 710px;
-    }
+	.pro1 {
+		flex-direction: row;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		margin-left: 20px;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		border-bottom-color: #ced3d9;
+		border-right-width: 0;
+		width: 710px;
 
-    .pro2 {
-        flex-direction: column;
-        border-right-style: solid;
-        border-right-width: 1px;
-        border-right-color: #ced3d9;
-        margin-left: 0;
-        padding-left: 20px;
-        padding-right: 20px;
-        width: 375px;
-        align-items: center;
-    }
+	}
 
-    .pro-img {
-        width: 335px;
-        height: 335px;
-    }
+	.pro2 {
+		flex-direction: column;
+		border-right-style: solid;
+		border-right-width: 1px;
+		border-right-color: #ced3d9;
+		margin-left: 0;
+		padding-left: 20px;
+		padding-right: 20px;
+		width: 375px;
+		align-items: center;
+	}
 
-    .pro-detail1 {
-        height: 300px;
-        overflow: hidden;
-        width: 350px;
-        margin-left: 20px;
-        lines: 2;
-        text-overflow: ellipsis;
-        font-size: 28px;
-        line-height: 34px;
-        color: #222222;
-    }
+	.pro-img {
+		width: 335px;
+		height: 335px;
+	}
 
-    .pro-detail2 {
-        width: 335px;
-        height: 150px;
-        margin-left: 0;
-    }
+	.pro-detail1 {
+		height: 300px;
+		overflow: hidden;
+		width: 350px;
+		margin-left: 20px;
+		lines: 2;
+		text-overflow: ellipsis;
+		font-size: 28px;
+		line-height: 34px;
+		color: #222222;
+	}
 
-    .refresh {
-        justify-content: center;
-        background-color: #fff;
-        line-height: 34px;
-    }
+	.pro-detail2 {
+		width: 335px;
+		height: 150px;
+		margin-left: 0;
+	}
 
-    .indicator {
-        line-height: 40px;
-        font-size: 24px;
-    }
+	.refresh {
+		justify-content: center;
+		background-color: #fff;
+		line-height: 34px;
+	}
+
+	.indicator {
+		line-height: 40px;
+		font-size: 24px;
+	}
 </style>
 <script>
-    export default{
-        data(){
-            return {
-                refreshing: false
-            }
-        },
-        props: ["proList", "grid"],
-        computed: {
-            gridName(){
-                return `pro${this.grid}`
-            }
-        },
-        methods: {
-            loadMore(){
-                this.$emit('loadMore')
-            },
-            scroll(contentOffset){
+	export default{
+		data(){
+			return {
+				refreshing: false
+			}
+		},
+		props: ["proList", "grid"],
+		computed: {
+			gridName(){
+				return `pro${this.grid}`
+			}
+		},
+		methods: {
+			loadMore(){
+				this.$emit('loadMore')
+			},
+			scroll(contentOffset){
 
-            },
-            onrefresh(){
-                if (this.refreshing)return
-                this.refreshing = true
-                setTimeout(() => {
-                    this.refreshing = false
-                }, 3000)
-            },
-            onpullingdown(){
+			},
+			onrefresh(){
+				if (this.refreshing)return
+				this.refreshing = true
+				setTimeout(() => {
+					this.refreshing = false
+				}, 3000)
+			},
+			onpullingdown(){
 
-            },
-            toDetail(url){
-                this.$router.push({name: 'proDetail', params: {url: `https://m.made-in-china.com/${url}`}})
-            },
+			},
+			toDetail(url){
+				this.$router.push({name: 'proDetail', params: {url: `https://m.made-in-china.com/${url}`}})
+			},
 
-        }
-    }
+		}
+	}
 </script>
