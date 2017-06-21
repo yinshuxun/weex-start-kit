@@ -6,15 +6,15 @@
 			<text class="nav-text">result</text>
 		</div>
 		<div class="nav-right">
-			<text class="micon nav-right-icon1" @click="changeGrid">{{getIcon1}}</text>
+			<text class="micon nav-right-icon1" @click="changeGrid">&#xe618;</text>
 			<!--<text>|</text>-->
-			<text class="micon nav-right-icon2">{{getIcon2}}</text>
+			<text class="micon nav-right-icon2">&#xe642;</text>
 		</div>
 	</div>
 </template>
 <style scoped>
 	.navigator {
-		width: 750px;
+		flex:1;
 		height: 96px;
 		flex-direction: row;
 		padding-left: 20px;
@@ -67,14 +67,11 @@
 	}
 </style>
 <script>
-	var he = require('he');
 
 	export default{
 		data(){
 			return {
 //                totalNum: 1655
-				icon1: "&#xe618;",
-				icon2: "&#xe642;"
 			}
 		},
 		props: ["totalNum"],
@@ -82,14 +79,6 @@
 			changeGrid(){
 				this.$emit("changeGrid")
 			}
-		},
-		computed: {
-			getIcon1(){
-				return he.decode(this.icon1)
-			},
-			getIcon2(){
-				return he.decode(this.icon2)
-			},
 		}
 	}
 </script>

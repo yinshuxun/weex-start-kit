@@ -6,9 +6,8 @@
 			<text class="indicator">loading...</text>
 		</refresh>
 		<cell class="pro-wrap" v-for="p,i in proList" v-if="i % grid === 0 ">
-			<div
-				v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in (i+1 === proList.length?[proList[i]]:[proList[i],proList[i+1]])"
-				:class="['pro1',`pro${grid}`]">
+			<div v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in (i+1 === proList.length?[proList[i]]:[proList[i],proList[i+1]])"
+				 :class="['pro1',`pro${grid}`]">
 				<image class="pro-img" :src="imgUrl"></image>
 				<div :class="['pro-detail1',`pro-detail${grid}`]">
 					<text>{{name}}</text>
@@ -21,14 +20,13 @@
 	.pro-list {
 		/*padding-left: 20px;*/
 		/*padding-right: 20px;*/
-		/*height: 980px;*/
+		height: 1132px;
 		flex-direction: row;
 	}
 
 	.pro-wrap {
 		flex-direction: row;
 		width: 750px;
-		flex:1;
 	}
 
 	.pro1 {
@@ -41,7 +39,6 @@
 		border-bottom-color: #ced3d9;
 		border-right-width: 0;
 		width: 710px;
-
 	}
 
 	.pro2 {

@@ -23,6 +23,7 @@
     .search-wrap {
         position: fixed;
         top: 0;
+		flex:1;
     }
 
     .search-bar-wrap {

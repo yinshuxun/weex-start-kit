@@ -1,13 +1,14 @@
 import Vue from "vue"
 import Vuex from "vuex"
-import { getSpecs } from "../common/utils"
+import {getSpecs} from "../common/utils"
 
 Vue.use(Vuex)
 
 const isProd = process.env.NODE_ENV === "production"
 
 const app = {
-	ctx: [`http://${process.env.IP}:9000`, "http://m.made-in-china.com"][+isProd]
+	// ctx: [`http://${process.env.IP}:9000`, "http://m.made-in-china.com"][+isProd]
+	ctx: 'http://192.168.31.174:9000'
 }
 
 const specs = getSpecs()
@@ -70,19 +71,19 @@ const mutations = {
 }
 
 const actions = {
-	triggerLoading ({ commit }, lstate) {
+	triggerLoading ({commit}, lstate) {
 		commit("triggerLoading", lstate)
 	},
-	changeSideState ({ commit }) {
+	changeSideState ({commit}) {
 		commit("changeSideState")
 	},
-	triggerMask ({ commit }, type) {
+	triggerMask ({commit}, type) {
 		commit("triggerMask", type)
 	},
-	triggerSuggestions ({ commit }, type) {
+	triggerSuggestions ({commit}, type) {
 		commit("triggerSuggestions", type)
 	},
-	setSearchData ({ commit }, type) {
+	setSearchData ({commit}, type) {
 		commit("setSearchData", type)
 	}
 }

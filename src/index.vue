@@ -23,12 +23,17 @@
 		margin: 0;
 	}
 
+	.icon {
+		font-family: iconfont;
+	}
+
 </style>
 
 <script>
 	import SideBar from './components/SideBar.vue'
 	import Menu from './components/Menu.vue'
 	import {mapGetters} from 'vuex'
+	import icon from './assets/iconfont/iconfont.ttf'
 	Vue.prototype.$modal = weex.requireModule("modal")
 
 	export default {
@@ -40,20 +45,20 @@
 		created(){
 			const domModule = weex.requireModule('dom')
 
-//			domModule.addRule('fontFace', {
-//				'fontFamily': 'iconfont',
-//				'src': "url(\'//at.alicdn.com/t/font_47qz8lcd2qkw3ik9.woff\')"
-//			})
-
 			domModule.addRule('fontFace', {
 				'fontFamily': 'iconfont',
-				'src': "url('\/\/at.alicdn.com/t/font_47qz8lcd2qkw3ik9.ttf')"
+				src: 'url(\'http://at.alicdn.com/t/font_47qz8lcd2qkw3ik9.ttf\')'
 			})
 
-			domModule.addRule('fontFace', {
-				'fontFamily': "iconfont4",
-				'src': "url('\/\/at.alicdn.com/t/font_zn5b3jswpofuhaor.ttf')"
-			});
+//			domModule.addRule('fontFace', {
+//				'fontFamily': 'iconfont',
+//				'src': icon
+//			})
+
+//			domModule.addRule('fontFace', {
+//				'fontFamily': "iconfont4",
+//				'src': "url('\/\/at.alicdn.com/t/font_zn5b3jswpofuhaor.ttf')"
+//			});
 		},
 		components: {
 			SideBar,
