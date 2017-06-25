@@ -1,35 +1,60 @@
-## 一、weex介绍(5分钟)（[更加细致的文档可见官方文档](https://weex.apache.org/cn/references/)）
+## 一、weex介绍（[更加细致的文档可见官方文档](https://weex.apache.org/cn/references/)）
 
 Weex 是一套简单易用的跨平台开发方案，能以 web 的开发体验构建高性能、可扩展的 native 应用。在最新的weex版本中，已经将vue作为默认的上层框架，并遵循 W3C 标准实现了统一的 JSEngine 和 DOM API，这样一来，你就可以体验到基于vue的webapp的开发体验，打造三端一致的 native 应用。
 
 ### 几种APP开发模式
-NativeApp | WebApp | weex | RN | Hybird
+NativeApp | WebApp | weex | RN | Hybird |   Cordova
 ---|---|---|---|---|---
 即传统的原生APP开发模式,Android基于Java语言,底层调用Google的 API;iOS基于OC或者Swift语言,底层调用App官方提供的API。 |即移动端的网站,将页面部署在服务器上,然后用户使用各大浏览器访问。一般泛指 SPA(Single Page Application)模式开发出的网站。|Weex最底层的原理是和React-Native相同的，就是将JS代码渲染成原生组件只不过在业务代码层面，Weex和React-Native有差别|Facebook发起的开源的一套新的APP开发方案,使用JS+部分原生语法来实现功能。初次学习成本较高,但是在入门后,经过良好的封装也能够实现大部分的跨平台。|即混合开发,由Native通过JSBridge等方法提供统一的API,然后用Html5+JS来写实际的逻辑,调用API,这种模式下,由于Android,iOS的API一般有一致性,而且最终的页面也是在webview中显示,所有有跨平台效果
 体验最好|体验最差|体验很好|体验很好|体验不错
 [更详细的对比](http://www.jianshu.com/p/20a3d10a4d57) / [rn和weex更详细对比脑图](http://naotu.baidu.com/file/1eb556f3380e8189be859348527ec518?token=a5a049eb4c618e70) 
 
-## 二、weex demo展示（大概10分钟）
+## 三、如何搭建weex项目）
+Weex也和前端项目一样，拥有它自己的脚手架全家桶。weex-toolkit + weexpack + playground + code snippets + weex-devtool。
 
-[demo代码地址](https://github.com/yinshuxun/weex-start-kit)
+[weex-toolkit](https://weex.apache.org/cn/guide/tools/toolkit.html) 是官方提供的一个脚手架命令行工具，你可以使用它进行 Weex 项目的创建，调试以及打包等功能。
 
-## 三、如何搭建weex项目（大概10分钟）
-[weex-toolkit](https://weex.apache.org/cn/guide/tools/toolkit.html) 是官方提供的一个脚手架命令行工具，你可以使用它进行 Weex 项目的创建，调试以及打包等功能
-### 安装，使用npm进行安装，确保你的node版本>=6
-    $ npm install -g weex-toolkit
-### 初始化 weex 项目
-    weex init weex-demo
-    
-    执行完命令后，在 awesome-project 目录中就创建了一个使用 Weex 和 Vue 的模板项目。
+安装，使用npm进行安装，确保你的node版本>=6
+    $ npm install -g weex-toolkit。
 
-    然后我们进入项目所在路径，weex-toolkit 已经为我们生成了标准项目结构。
+1、初始化 weex 项目
 
-    在 package.json 中，已经配置好了几个常用的 npm script，分别是：
+    $ weex init weex-demo
+
+执行完命令后，在 weex-demo 目录中就创建了一个使用 Weex 和 Vue 的模板项目。然后我们进入项目所在路径，weex-toolkit 已经为我们生成了标准项目结构。在 package.json 中，已经配置好了几个常用的 npm script，分别是：
 
     build: 源码打包，生成 JS Bundle
     dev: webpack watch 模式，方便开发
     serve: 开启静态服务器
     debug: 调试模式
+    
+2、weex项目调试：
+
+这里需要下载一个weex-playground,是一个上架的App，iios直接在扫码，安卓可以[点击这里](http://appdownload.alicdn.com/publish/weex_playgroud/latest/weex_playgroud_10006024.apk)这个可以用来通过扫码实时在手机上显示出实际的页面。
+
+     $ npm run debug
+使用手机上的weexplayground扫描浏览器打开的二维码。
+单纯启动一个调试服务器，并同时唤起Chrome浏览器打开调试主页。这个调试主页上会有一个二维码，使用 Playground App 扫这个二维码可以开启 Playground 调试。开启调试后,设备列表中会出现您的设备，根据提示进行后续的调试操作。其中：  
+  
+    Inspector 能够用来查看 Element \ NetWork \ Console log \ ScreenCast \ BoxModel \ Native View 等。
+    
+    Debugger 用来调试 Weex 中的 JS 代码，能够设置断点、查看调用栈。
+    
+3、weex项目的打包和运行
+    
+    $ npm i -g weexpack
+     
+weexpack 是基于 Weex的快速搭建应用原型的利器。它能够帮助开发者通过命令行创建 Weex 工程，添加相应平台的 Weex app 模版，并基于模版从本地，GitHub 或者 Weex 应用市场安装插件，快速打包 Weex 应用并安装到手机运行。你可以理解为一个就是实际上也是对webpack进行了一次封装
+
+    $ npm run compiler (weexpack会打包生成一个jsbundle，实际上也是对webpack的封装)
+    
+    $ weex platform add android/ios
+    
+    $ weex run android
+
+## 三、weex demo展示
+
+[demo源码代码地址](https://github.com/yinshuxun/weex-start-kit)
     
 ## 四、weex中vue的应用
 
