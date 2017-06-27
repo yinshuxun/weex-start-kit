@@ -5,9 +5,9 @@
 				 :display="refreshing ? 'show' : 'hide'">
 			<text class="indicator">loading...</text>
 		</refresh>
-		<cell class="pro-wrap" v-for="p,i in proList" v-if="i % grid === 0 ">
+		<cell :class="[`pro-wrap${grid}`]" v-for="p,i in proList" v-if="i % grid === 0 ">
 			<div v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in (i+1 === proList.length?[proList[i]]:[proList[i],proList[i+1]])"
-				 :class="['pro1',`pro${grid}`]">
+				 :class="[`pro${grid}`]">
 				<image class="pro-img" :src="imgUrl"></image>
 				<div :class="['pro-detail1',`pro-detail${grid}`]">
 					<text>{{name}}</text>
@@ -24,9 +24,16 @@
 		flex-direction: row;
 	}
 
-	.pro-wrap {
+	.pro-wrap1 {
 		flex-direction: row;
 		width: 750px;
+		height: 375px;
+	}
+
+	.pro-wrap2 {
+		flex-direction: row;
+		width: 750px;
+		height: 525px;
 	}
 
 	.pro1 {

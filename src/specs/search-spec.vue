@@ -57,9 +57,6 @@
 			},
 			search(params){
 				this.triggerLoading('on')
-				this.$modal.toast({
-					message: this.app.ctx
-				})
 				return new Promise((succ, error) => {
 					stream.fetch({
 						method: "POST",
@@ -72,9 +69,6 @@
 						body: JSON.stringify(params)
 					}, res => {
 						this.triggerLoading('off')
-//						this.$modal.toast({
-//							message: res.ok+'123'
-//						})
 						!res.ok && _self.$modal.alert({
 							message: `${res.statusText}::${res.data}`
 						})

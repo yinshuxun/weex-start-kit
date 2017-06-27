@@ -1,10 +1,8 @@
 <template>
 	<div class="main-wrap">
-		<div>
-			<sideBar></sideBar>
-			<router-view></router-view>
-			<menu></menu>
-		</div>
+		<router-view></router-view>
+		<menu></menu>
+		<sideBar></sideBar>
 		<div class="loading" v-if="loading==='on'"></div>
 	</div>
 </template>
@@ -22,11 +20,6 @@
 	body {
 		margin: 0;
 	}
-
-	.icon {
-		font-family: iconfont;
-	}
-
 </style>
 
 <script>
@@ -49,16 +42,6 @@
 				'fontFamily': 'iconfont',
 				src: 'url(\'http://at.alicdn.com/t/font_47qz8lcd2qkw3ik9.ttf\')'
 			})
-
-//			domModule.addRule('fontFace', {
-//				'fontFamily': 'iconfont',
-//				'src': icon
-//			})
-
-//			domModule.addRule('fontFace', {
-//				'fontFamily': "iconfont4",
-//				'src': "url('\/\/at.alicdn.com/t/font_zn5b3jswpofuhaor.ttf')"
-//			});
 		},
 		components: {
 			SideBar,
