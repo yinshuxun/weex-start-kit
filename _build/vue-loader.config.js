@@ -11,7 +11,8 @@ module.exports = {
 	},
 	loaders: {
 		js: "buble-loader?objectAssign=Object.assign"
-	},
+	}
+
 	// buble: {
 	//     objectAssign: 'Object.assign',
 	// },

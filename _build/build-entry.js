@@ -8,14 +8,15 @@ const entryPath = path.resolve(__dirname, '../entrys/') // 存放入口文件的
 const FILE_TYPE = '.vue'
 
 const getEntryFileContent = path => {
-	return `// 入口文件
-import App from '${path}${FILE_TYPE}'
-/* eslint-disable no-new */
-new Vue({
-  el: '#root',
-  render: h => h(App)
-})
-  `
+	return
+	`// 入口文件
+		import App from '${path}${FILE_TYPE}'
+		/* eslint-disable no-new */
+		new Vue({
+  			el: '#root',
+  			render: h => h(App)
+		})
+  	`
 }
 // 导出方法
 module.exports = _ => {
