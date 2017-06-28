@@ -6,17 +6,18 @@
 			<text class="indicator">loading...</text>
 		</refresh>
 		<cell :class="[`pro-wrap${grid}`]" v-for="p,i in proList" v-if="i % grid === 0 ">
-			<div v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in (i+1 === proList.length?[proList[i]]:[proList[i],proList[i+1]])"
-				 :class="[`pro${grid}`]">
+			<div
+				v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in (i+1 === proList.length?[proList[i]]:[proList[i],proList[i+1]])"
+				:class="[`pro${grid}`]" @click="toDetail(url)">
 				<image class="pro-img" :src="imgUrl"></image>
 				<div :class="['pro-detail1',`pro-detail${grid}`]">
 					<text>{{name}}</text>
 				</div>
 			</div>
 		</cell>
-		<cell class="loading">
-			<text>loading</text>
-		</cell>
+		<!--<cell class="loading">-->
+		<!--<text>loading</text>-->
+		<!--</cell>-->
 	</list>
 </template>
 <style scoped>
@@ -97,13 +98,16 @@
 		font-size: 24px;
 	}
 
-	.loading{
+	.loading {
 		line-height: 40px;
 		font-size: 24px;
 		text-align: center;
 	}
 </style>
 <script>
+	const navigator = weex.requireModule('navigator')
+	const storage = weex.requireModule('storage')
+
 	export default{
 		data(){
 			return {
@@ -134,9 +138,15 @@
 
 			},
 			toDetail(url){
-				this.$router.push({name: 'proDetail', params: {url: `https://m.made-in-china.com/${url}`}})
+				storage.setItem({
+					detailLink: `https://m.made-in-china.com/${url}`
+				})
+				navigator.push({
+					url: 'http://192.168.31.174:8080/pro-detail.weex.js',
+					animated: "true"
+				})
+//				this.$router.push({name: 'proDetail', params: {url: ``}})
 			},
-
 		}
 	}
 </script>
