@@ -1,6 +1,6 @@
 import Router from "vue-router"
 import Hello from "../views/hello.vue"
-import proDetail from "../views/pro-detail.vue"
+import proDetail from "../views/proDetail.vue"
 import { getSpecs } from "../common/utils"
 
 Vue.use(Router)

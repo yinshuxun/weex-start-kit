@@ -138,13 +138,13 @@
 
 			},
 			toDetail(url){
-				storage.setItem({
-					detailLink: `https://m.made-in-china.com/${url}`
-				})
-				navigator.push({
-					url: 'http://192.168.31.174:8080/pro-detail.weex.js',
-					animated: "true"
-				})
+				storage.setItem('detailLink', `https://m.made-in-china.com/${url}`)
+//				storage.setItem('detailLink', "http://www.made-in-china.com")
+//				navigator.push({
+//					url: 'http://192.168.31.174:8080/pro-detail.weex.js',
+//					animated: "true"
+//				})
+				this.goTo("proDetail")
 //				this.$router.push({name: 'proDetail', params: {url: ``}})
 			},
 		}
