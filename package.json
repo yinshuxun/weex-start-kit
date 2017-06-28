@@ -4,13 +4,13 @@
 	"description": "a weex project",
 	"main": "index.js",
 	"scripts": {
-		"build": "webpack --config build/prod.js --progress",
+		"build": "webpack --config _build/prod.js --progress",
 		"build:apk": "zsh ./cli/debug-android.sh",
-		"dev": "node build/dev.js",
+		"dev": "node _build/dev.js",
 		"ss": "babel-node ss",
 		"debug": "weex-devtool",
-		"lint": "eslint src build test ss test web",
-		"lint:fix": "eslint src build test ss test web --fix"
+		"lint": "eslint src _build test ss test web",
+		"lint:fix": "eslint src _build test ss test web --fix"
 	},
 	"keywords": [
 		"weex"

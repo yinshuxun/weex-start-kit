@@ -4,6 +4,7 @@ var base = require('./base')
 var webConfig = base('vue', true)
 var weexConfig = base('weex', true)
 
+
 webConfig.entry = {
     app: [
         './src/render.js',

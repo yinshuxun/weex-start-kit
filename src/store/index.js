@@ -8,8 +8,8 @@ const isProd = process.env.NODE_ENV === "production"
 
 const app = {
 	// ctx: [`http://${process.env.IP}:9000`, "http://m.made-in-china.com"][+isProd]
-	// ctx: 'http://192.168.31.174:9000'
-	ctx: 'http://192.168.26.226:9000'
+	ctx: 'http://192.168.31.174:9000'
+	// ctx: 'http://192.168.26.226:9000'
 }
 
 const specs = getSpecs()

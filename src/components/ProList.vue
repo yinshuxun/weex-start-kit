@@ -14,6 +14,9 @@
 				</div>
 			</div>
 		</cell>
+		<cell class="loading">
+			<text>loading</text>
+		</cell>
 	</list>
 </template>
 <style scoped>
@@ -33,7 +36,7 @@
 	.pro-wrap2 {
 		flex-direction: row;
 		width: 750px;
-		height: 525px;
+		height: 600px;
 	}
 
 	.pro1 {
@@ -92,6 +95,12 @@
 	.indicator {
 		line-height: 40px;
 		font-size: 24px;
+	}
+
+	.loading{
+		line-height: 40px;
+		font-size: 24px;
+		text-align: center;
 	}
 </style>
 <script>

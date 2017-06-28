@@ -6,6 +6,7 @@ var weexConfig = base('weex')
 webConfig.entry = {
   app: ['./src/render.js', './src/app.js']
 }
+
 weexConfig.entry = {
   app: ['./src/app.js']
 }
