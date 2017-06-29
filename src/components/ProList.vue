@@ -1,5 +1,6 @@
 <template>
-	<list class="pro-list" @loadmore="loadMore" loadmoreoffset="0" @scroll="scroll">
+	<list class="pro-list" @loadmore="loadMore" loadmoreoffset="20" @scroll="scroll" column-width="300" column-count="2"
+		  column-gap="10">
 		<refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown"
 				 :display="refreshing ? 'show' : 'hide'">
 			<text class="indicator">loading...</text>
@@ -14,7 +15,7 @@
 				</div>
 			</cell>
 		</template>
-		<template v-else>
+		<template v-if="grid === 2">
 			<cell class="pro-wrap2" v-for="p,i in proList" v-if="i % grid === 0">
 				<div
 					v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in (i+1 === proList.length?[proList[i]]:[proList[i],proList[i+1]])"
@@ -43,7 +44,7 @@
 	.pro-wrap1 {
 		flex-direction: row;
 		width: 750px;
-		height: 425px;
+		height: 380px;
 	}
 
 	.pro1 {
@@ -134,18 +135,10 @@
 		computed: {
 			gridName(){
 				return `pro${this.grid}`
-			},
-			listStyle(){
-			    return {
-			        height: `${WXEnvironment.deviceHeight}px`
-				}
 			}
 		},
 		methods: {
 			loadMore(){
-			    this.$modal.toast({
-					message:'loadmore'
-				})
 				this.$emit('loadMore')
 			},
 			scroll(contentOffset){

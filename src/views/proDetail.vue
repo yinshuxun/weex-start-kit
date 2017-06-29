@@ -1,8 +1,6 @@
 <template>
 	<div>
-		<web ref="webview"
-			 :src="url"
-			 class="webview"></web>
+		<web ref="webview" :src="url" class="webview"></web>
 	</div>
 </template>
 <script>
@@ -17,7 +15,7 @@
 		},
 		created(){
 			storage.getItem('detailLink', e => {
-				this.url = e.data
+				this.url = "http://m.made-in-china.com"
 			})
 		}
 	}
