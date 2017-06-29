@@ -6,7 +6,7 @@
 			<text class="indicator">loading...</text>
 		</refresh>
 		<template v-if="grid === 1">
-			<cell class="pro-wrap1" v-for="{name,imgUrl,fobPrice,minOrder,componey,url},i in proList" @click="toDetail(url)" v-if="grid == 1">
+			<cell class="pro-wrap1" v-for="{name,imgUrl,fobPrice,minOrder,componey,url},i in proList" @click="toDetail(url)">
 				<div class="pro1">
 					<image class="pro-img" :src="imgUrl"></image>
 					<div class="pro-detail1">
