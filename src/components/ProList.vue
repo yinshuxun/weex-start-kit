@@ -1,20 +1,9 @@
 <template>
-	<list class="pro-list" @loadmore="loadMore" loadmoreoffset="20" @scroll="scroll" column-width="300" column-count="2"
-		  column-gap="10">
+	<list class="pro-list" @loadmore="loadMore" loadmoreoffset="0" @scroll="scroll">
 		<refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown"
 				 :display="refreshing ? 'show' : 'hide'">
 			<text class="indicator">loading...</text>
 		</refresh>
-		<!--<cell :class="[`pro-wrap${grid}`]" v-for="p,i in proList" v-if="i % grid === 0 " >-->
-			<!--<div-->
-				<!--v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in (i+1 === proList.length?[proList[i]]:[proList[i],proList[i+1]])"-->
-				<!--:class="[`pro${grid}`]" @click="toDetail(url)">-->
-				<!--<image class="pro-img" :src="imgUrl"></image>-->
-				<!--<div :class="[`pro-detail${grid}`]">-->
-					<!--<text>{{name}}</text>-->
-				<!--</div>-->
-			<!--</div>-->
-		<!--</cell>-->
 		<template v-if="grid === 1">
 			<cell class="pro-wrap1" v-for="{name,imgUrl,fobPrice,minOrder,componey,url},i in proList" @click="toDetail(url)" v-if="grid == 1">
 				<div class="pro1">
@@ -25,7 +14,7 @@
 				</div>
 			</cell>
 		</template>
-		<template v-if="grid === 2">
+		<template v-else>
 			<cell class="pro-wrap2" v-for="p,i in proList" v-if="i % grid === 0">
 				<div
 					v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in (i+1 === proList.length?[proList[i]]:[proList[i],proList[i+1]])"
@@ -37,15 +26,12 @@
 				</div>
 			</cell>
 		</template>
-
-		<!--<cell class="loading">-->
-		<!--<text>loading</text>-->
-		<!--</cell>-->
 	</list>
 </template>
 <style scoped>
 	.pro-list {
 		flex-direction: row;
+		height: 1050px;
 	}
 
 	.pro-wrap2 {
@@ -148,10 +134,18 @@
 		computed: {
 			gridName(){
 				return `pro${this.grid}`
+			},
+			listStyle(){
+			    return {
+			        height: `${WXEnvironment.deviceHeight}px`
+				}
 			}
 		},
 		methods: {
 			loadMore(){
+			    this.$modal.toast({
+					message:'loadmore'
+				})
 				this.$emit('loadMore')
 			},
 			scroll(contentOffset){

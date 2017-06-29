@@ -21,7 +21,7 @@
 </template>
 <style scoped>
     .search-wrap {
-        position: fixed;
+        position: absolute;
         top: 0;
 		flex:1;
     }
