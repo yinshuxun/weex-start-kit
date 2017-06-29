@@ -1,25 +1,11 @@
 <template>
 	<div class="wrapper">
-		<text class="button" @click="jump">Jump</text>
+		<text class="button" @click="">IS B,NO JUMP</text>
 	</div>
 </template>
 
 <script>
-	var navigator = weex.requireModule('navigator')
-	var modal = weex.requireModule('modal')
-
 	export default {
-		methods: {
-			jump (event) {
-				console.log('will jump')
-				navigator.push({
-					url: 'http://dotwe.org/raw/dist/519962541fcf6acd911986357ad9c2ed.js',
-					animated: "true"
-				}, event => {
-					modal.toast({ message: 'callback: ' + event })
-				})
-			}
-		}
 	};
 </script>
 

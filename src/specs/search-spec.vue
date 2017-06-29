@@ -31,7 +31,7 @@
 				totalNum: "",
 				proList: "",
 				currPage: 1,
-				searchWord: "",
+				searchWord: "led",
 				showLoading: false,
 				grid: 1
 			}

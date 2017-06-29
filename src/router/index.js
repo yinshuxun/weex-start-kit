@@ -1,5 +1,7 @@
 import Router from "vue-router"
 import Hello from "../views/hello.vue"
+import A from "../views/A.vue"
+import B from "../views/B.vue"
 import proDetail from "../views/proDetail.vue"
 import { getSpecs } from "../common/utils"
 
@@ -15,6 +17,8 @@ export default new Router({
 			require(['../views/hello.vue'], resolve)
 		}
 		},
+		{path: "/A", component: A},
+		{path: "/B", component: B},
 		{path: "/", redirect: "/search"}
 	]
 })
