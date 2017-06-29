@@ -1,15 +1,15 @@
 const navigator = weex.requireModule('navigator')
-
+import store from '../store'
 
 export default {
 	methods: {
 		goTo (url) {
-			console.log(String(weex.config.bundleUrl).split('#').shift())
 			if (WXEnvironment.platform === 'Web' && this.$router) {
 				this.$router.push(url)
 			} else {
+				const staticUrl = store.state.app.staticUrl;
 				navigator.push({
-					url: `http://192.168.31.174:8080/${url}.weex.js`,
+					url: `${staticUrl}/${url}.weex.js`,
 					animated: "true"
 				}, () => {
 				})

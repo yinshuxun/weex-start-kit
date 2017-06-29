@@ -5,16 +5,39 @@
 				 :display="refreshing ? 'show' : 'hide'">
 			<text class="indicator">loading...</text>
 		</refresh>
-		<cell :class="[`pro-wrap${grid}`]" v-for="p,i in proList" v-if="i % grid === 0 ">
-			<div
-				v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in (i+1 === proList.length?[proList[i]]:[proList[i],proList[i+1]])"
-				:class="[`pro${grid}`]" @click="toDetail(url)">
-				<image class="pro-img" :src="imgUrl"></image>
-				<div :class="['pro-detail1',`pro-detail${grid}`]">
-					<text>{{name}}</text>
+		<!--<cell :class="[`pro-wrap${grid}`]" v-for="p,i in proList" v-if="i % grid === 0 " >-->
+			<!--<div-->
+				<!--v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in (i+1 === proList.length?[proList[i]]:[proList[i],proList[i+1]])"-->
+				<!--:class="[`pro${grid}`]" @click="toDetail(url)">-->
+				<!--<image class="pro-img" :src="imgUrl"></image>-->
+				<!--<div :class="[`pro-detail${grid}`]">-->
+					<!--<text>{{name}}</text>-->
+				<!--</div>-->
+			<!--</div>-->
+		<!--</cell>-->
+		<template v-if="grid === 1">
+			<cell class="pro-wrap1" v-for="{name,imgUrl,fobPrice,minOrder,componey,url},i in proList" @click="toDetail(url)" v-if="grid == 1">
+				<div class="pro1">
+					<image class="pro-img" :src="imgUrl"></image>
+					<div class="pro-detail1">
+						<text lines="2">{{name}}</text>
+					</div>
 				</div>
-			</div>
-		</cell>
+			</cell>
+		</template>
+		<template v-if="grid === 2">
+			<cell class="pro-wrap2" v-for="p,i in proList" v-if="i % grid === 0">
+				<div
+					v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in (i+1 === proList.length?[proList[i]]:[proList[i],proList[i+1]])"
+					class="pro2" @click="toDetail(url)">
+					<image class="pro-img" :src="imgUrl"></image>
+					<div class="pro-detail2">
+						<text lines="2">{{name}}</text>
+					</div>
+				</div>
+			</cell>
+		</template>
+
 		<!--<cell class="loading">-->
 		<!--<text>loading</text>-->
 		<!--</cell>-->
@@ -22,22 +45,19 @@
 </template>
 <style scoped>
 	.pro-list {
-		/*padding-left: 20px;*/
-		/*padding-right: 20px;*/
-		height: 1132px;
 		flex-direction: row;
-	}
-
-	.pro-wrap1 {
-		flex-direction: row;
-		width: 750px;
-		height: 375px;
 	}
 
 	.pro-wrap2 {
 		flex-direction: row;
 		width: 750px;
-		height: 600px;
+		height: 525px;
+	}
+
+	.pro-wrap1 {
+		flex-direction: row;
+		width: 750px;
+		height: 425px;
 	}
 
 	.pro1 {
@@ -54,10 +74,15 @@
 
 	.pro2 {
 		flex-direction: column;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		border-bottom-color: #ced3d9;
 		border-right-style: solid;
 		border-right-width: 1px;
 		border-right-color: #ced3d9;
 		margin-left: 0;
+		padding-top: 20px;
+		padding-bottom: 20px;
 		padding-left: 20px;
 		padding-right: 20px;
 		width: 375px;
@@ -76,7 +101,7 @@
 		margin-left: 20px;
 		lines: 2;
 		text-overflow: ellipsis;
-		font-size: 28px;
+		font-size: 14px;
 		line-height: 34px;
 		color: #222222;
 	}
@@ -85,6 +110,11 @@
 		width: 335px;
 		height: 150px;
 		margin-left: 0;
+		margin-top: 10px;
+		font-size: 28px;
+		line-height: 34px;
+		color: #222222;
+		lines: 2;
 	}
 
 	.refresh {
