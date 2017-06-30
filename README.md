@@ -1,4 +1,4 @@
-# weex-vue-starter-kit [新增个人weex分享大纲](https://github.com/yinshuxun/weex-start-kit/blob/master/share.md)
+# weex-vue-starter-kit [新增个人weex分享大纲](https://github.com/yinshuxun/weex-start-kit/blob/master/sharing/share.md)
 
 > 吐槽：复制粘贴了一波 weex-toolkit 的配置
 
