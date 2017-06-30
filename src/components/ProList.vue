@@ -32,7 +32,7 @@
 <style scoped>
 	.pro-list {
 		flex-direction: row;
-		height: 1050px;
+		height: 1100px;
 	}
 
 	.pro-wrap2 {
@@ -140,6 +140,9 @@
 		methods: {
 			loadMore(){
 				this.$emit('loadMore')
+				this.$modal.toast({
+					message:"loadmore"
+				})
 			},
 			scroll(contentOffset){
 

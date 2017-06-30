@@ -1,13 +1,12 @@
 <template>
     <div class="search-wrap">
-        <!--<mask></mask>-->
         <div class="search-bar-wrap">
             <text class="back micon">&#xe675;</text>
             <div class="input-wrap">
                 <input class="input-search" type="text"
                        :value="searchWord"
                        @input="onInput"
-                       @click="getSuggestions"
+                       @focus="getSuggestions"
                        @return="search"/>
                 <div class="input-btn" @click="search">
                     <text class="micon sea-icon">&#xe60d;</text>
@@ -22,6 +21,7 @@
 <style scoped>
     .search-wrap {
         position: absolute;
+		height: 496px;
         top: 0;
 		flex:1;
     }
@@ -95,7 +95,6 @@
 <script>
     import {mapActions, mapGetters} from 'vuex'
     import suggestion from '../components/Suggestion.vue'
-    import mask from "../components/Mask.vue"
 
     const stream = weex.requireModule("stream")
 
@@ -151,8 +150,7 @@
             ...mapGetters(["searchData", "suggIsOpen", "app"])
         },
         components: {
-            suggestion,
-            mask
+            suggestion
         }
     }
 

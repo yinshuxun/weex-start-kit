@@ -3,6 +3,7 @@
 		<div class="place-blank"></div>
 		<navigator-bar @changeGrid="changeGrid" :totalNum="totalNum"></navigator-bar>
 		<pro-list :proList="proList" @loadMore="loadMore" :grid="grid"></pro-list>
+		<hodeMask></hodeMask>
 		<search-bar @triggerSearch="triggerSearch"></search-bar>
 	</div>
 </template>
@@ -21,7 +22,7 @@
 	import searchBar from "../components/SearchBar.vue"
 	import navigatorBar from "../components/NavigatorBar.vue"
 	import proList from "../components/ProList.vue"
-	import ledJson from "../assets/simulation/led-json"
+	import hodeMask from "../components/Mask.vue"
 	import {mapGetters, mapActions} from "vuex"
 	var stream = weex.requireModule("stream")
 
@@ -40,6 +41,7 @@
 			searchBar,
 			navigatorBar,
 			proList,
+			hodeMask
 		},
 		created (){
 			this.search({
