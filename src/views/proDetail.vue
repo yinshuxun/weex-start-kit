@@ -15,7 +15,7 @@
 		},
 		created(){
 			storage.getItem('detailLink', e => {
-				this.url = "http://m.made-in-china.com"
+				this.url = e.data
 			})
 		}
 	}
