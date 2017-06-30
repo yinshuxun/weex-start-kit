@@ -6,7 +6,7 @@
                 <input class="input-search" type="text"
                        :value="searchWord"
                        @input="onInput"
-                       @focus="getSuggestions"
+                       @click="getSuggestions"
                        @return="search"/>
                 <div class="input-btn" @click="search">
                     <text class="micon sea-icon">&#xe60d;</text>
