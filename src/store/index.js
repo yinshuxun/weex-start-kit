@@ -4,16 +4,21 @@ import {getSpecs} from "../common/utils"
 
 Vue.use(Vuex)
 
-const isProd = process.env.NODE_ENV === "production"
-
 const app = {
 	// ctx: [`http://${process.env.IP}:9000`, "http://m.made-in-china.com"][+isProd]
+	// home
 	// ctx: 'http://192.168.31.174:9000',
 	// staticUrl: 'http://192.168.31.174:8080'
 
-	ctx: 'http://192.168.26.226:9000',
-	staticUrl: 'http://192.168.26.226:8080'
+	// office
+	// ctx: 'http://192.168.26.226:9000',
+	// staticUrl: 'http://192.168.26.226:8080'
+
+	ctx: `http://${process.env.IP}:9000`,
+	staticUrl: `http://${process.env.IP}:8080`
 }
+
+const isProd = process.env.NODE_ENV === "production"
 
 const specs = getSpecs()
 

@@ -3,18 +3,16 @@
 Weex 是一套简单易用的跨平台开发方案，能以 web 的开发体验构建高性能、可扩展的 native 应用。在最新的weex版本中，已经将vue作为默认的上层框架，并遵循 W3C 标准实现了统一的 JSEngine 和 DOM API，这样一来，你就可以体验到基于vue的webapp的开发体验，打造三端一致的 native 应用。
 
 ### 几种APP开发模式
-
-NativeApp | weex | rn | hybird | webapp
----------- | ------ | --- | ----| ----
-即传统的原生APP开发模式,Android基于Java语言,底层调用Google的 API;iOS基于OC或者Swift语言,底层调用App官方提供的API | Weex最底层的原理是和React-Native相同的，就是将JS代码渲染成原生组件只不过在业务代码层面，Weex和React-Native有差别|Facebook发起的开源的一套新的APP开发方案,使用JS+部分原生语法来实现功能。初次学习成本较高,但是在入门后,经过良好的封装也能够实现大部分的跨平台  | 即混合开发,由Native通过JSBridge等方法提供统一的API,然后用Html5+JS来写实际的逻辑,调用API,这种模式下,由于Android,iOS的API一般有一致性,而且最终的页面也是在webview中显示,所有有跨平台效果 | 即移动端的网站,将页面部署在服务器上,然后用户使用各大浏览器访问。一般泛指 SPA(Single Page Application)模式开发出的网站 
-体验最好 | 体验很好 | 体验很好 | 体验不错 | 体验最差
-
+NativeApp | WebApp | weex | RN | Hybird 
+---|---|---|---|---|---
+即传统的原生APP开发模式,Android基于Java语言,底层调用Google的 API;iOS基于OC或者Swift语言,底层调用App官方提供的API。 |即移动端的网站,将页面部署在服务器上,然后用户使用各大浏览器访问。一般泛指 SPA(Single Page Application)模式开发出的网站。|Weex最底层的原理是和React-Native相同的，就是将JS代码渲染成原生组件只不过在业务代码层面，Weex和React-Native有差别|Facebook发起的开源的一套新的APP开发方案,使用JS+部分原生语法来实现功能。初次学习成本较高,但是在入门后,经过良好的封装也能够实现大部分的跨平台。|即混合开发,由Native通过JSBridge等方法提供统一的API,然后用Html5+JS来写实际的逻辑,调用API,这种模式下,由于Android,iOS的API一般有一致性,而且最终的页面也是在webview中显示,所有有跨平台效果
+体验最好|体验最差|体验很好|体验很好|体验不错
 [更详细的对比](http://www.jianshu.com/p/20a3d10a4d57) / [rn和weex更详细对比脑图](http://naotu.baidu.com/file/1eb556f3380e8189be859348527ec518?token=a5a049eb4c618e70) 
 
 ## 二、如何搭建weex项目
 Weex也和前端项目一样，拥有它自己的脚手架全家桶。weex-toolkit + weexpack + playground + code snippets + weex-devtool。
 
-[weex-toolkit](https://weex.apache.org/cn/guide/tools/toolkit.html) 是官方提供的一个脚手架命令行工具，你可以使用它进行 Weex 项目的创建，调试以及打包等功能。
+[weex-toolkit](https://weex.apache.org/cn/guide/tools/toolkit.html) 是官方提供的一个脚手架命令行工具，你可以使用它进行 Weex-pack 项目的创建，调试以及打包等功能。
 
 安装，使用npm进行安装，确保你的node版本>=6
     
@@ -83,18 +81,23 @@ weexpack 是新一代的weex应用工程和插件工程开发套件，是基于w
     更详细的的打包以及插件机制，见https://github.com/weexteam/weex-pack
 
     
-## 三、weex中vue的应用
-1、不支持vue中一些和dom有关的api，比如一些键盘事件的修饰符（{keyCode|keyAlias}）、v-text
+## 三、weex中vue的应用以及差异
+1、weex中默认使用.vue 文件,基于template, style, script 快速构建组件化的应用。
 
-2、weex在原声应用中大多是以'多页的实现存在'，因此不支持Vue的一些全局功能，如Vue.config、Vue.filter、Vue.mixin、Vue.use，不过依然可以在一个单页中使用，每一个单页中还是用的同一个实例的
+2、支持vue大部分的api，除了一些dom有关的，比如一些键盘事件的修饰符（{keyCode|keyAlias}）、v-text
 
-3、编译环境 
+3、页面状态之间的共享和隔离
+
+所有的weex页面，不管是基于vue和rax，都公用了一个weex runtime，其中js引擎只初始化一次，除非重启，这种情况下，如果共享全局状态很有可能造成内存泄漏，因此最好是隔离页面状态。因此weex在原生应用中大多是以'多页的实现存在'，因此不支持Vue的一些全局功能，如Vue.config、Vue.filter、Vue.mixin、Vue.use，不过依然可以在一个单页中使用，每一个单页中还是用的同一个实例的
+
+4、另外针对vue-router和vuex大部分在weex中都能完整应用，部分差异可见[weex中使用vue全家桶的差异性](https://weex.apache.org/cn/references/vue/difference-of-vuex.html)。
+
+在演示项目中，使用的是web端完整单页，通过路由跳转，但是native端，复杂单页中使用vue-router,多页场景是使用navigator模块，[点击查看跳转逻辑](https://github.com/yinshuxun/weex-start-kit/blob/master/src/mixins/index.js)
+
+5、编译环境 
 
 针对 Web 平台，和普通 Vue 2.X 项目一样，可以使用任意官方推荐的方式编译源文件，如 Webpack + vue-loader 或者 Browserify + vueify 。
 针对 Android 和 iOS 平台，我们使用 weex-loader 工具支持编译 .vue 格式的单文件组件；也就是说，目前只能使用 Webpack + weex-loader 来生成原生端可用的 js bundle。
-
-
-4、另外针对vue-router和vuex大部分在weex中都能完整应用，部分差异可见[weex中使用vue全家桶的差异性](https://weex.apache.org/cn/references/vue/difference-of-vuex.html)。这里提一下vue-router, 演示工程中，使用的是web端完整单页，通过路由跳转，但是native端，我们使用weex提供的navigator模块来跳转新的页面，[点击查看跳转逻辑](https://github.com/yinshuxun/weex-start-kit/blob/master/src/mixins/index.js)
 
 ## 四、weex与web平台的差异
 * BOM & DOM
@@ -103,6 +106,7 @@ weexpack 是新一代的weex应用工程和插件工程开发套件，是基于w
     2、仅支持部分事件类型
     3、没有window/location/document/history/navigator等等对象。但是提供了诸如
     WXEnvironment对象，可以获取到当前设备的屏幕或者环境信息。
+    4、weex SDK >= 0.10.0 的才支持事件冒泡
     
 * 布局 & css
 
@@ -115,7 +119,7 @@ weexpack 是新一代的weex应用工程和插件工程开发套件，是基于w
     
 * 组件 
 
-    1、只有scroll组件有滚动效果
+    1、只有scroll/list组件有滚动效果
     
     等等 ....
 
@@ -142,14 +146,5 @@ web和weex端单独打包，web单页，weex多入口，[详情可见配置](htt
 	和如今 web 开发的最佳实践一样，Weex 会把一个页面的源代码全部编译打包成一个 JS bundle，在浏览器中，我们需要把这个 JS bundle 作为一段 <script> 载入网页，在客户端里，我们把这段 JS bundle 载入本地，并通过 WeexSDK 直接执行。
 	
 android native中。Weex中的JSBridge，还是比较复杂的，因为它们都将html页面映射成了原生组件，不在基于webview提供的那几个API。它们是通过JNI，让C++作为一个中间层，实现Java与JS的绑定。这里有几篇详细的文章[weex的jsbridge实现原理](https://zhuanlan.zhihu.com/p/25326775)
-    
-## 附录：（踩过的坑）
-1、组件不能使用header为组件名
 
-2、text组件不能直接获取value
 
-3、position：fix的元素切换路由之后还会存在页面之中
-
-4、vue的行为事件不能兼容，具体得按照weex文档
-
-5、如果定位元素超过容器边界，在 Android 下，超出部分将不可见，原因在于 Android 端元素 overflow 默认值为 hidden，但目前 Android 暂不支持设置 overflow: visible。
