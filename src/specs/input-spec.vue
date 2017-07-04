@@ -1,5 +1,129 @@
 <template>
 	<div>
+		<div>
+			<text style="font-size: 40px">oninput: {{txtInput}}</text>
+			<text style="font-size: 40px">onchange: {{txtChange}}</text>
+			<text style="font-size: 40px">onreturntype: {{txtReturnType}}</text>
+		</div>
+		<scroller>
+			<div>
+				<div style="background-color: #286090">
+					<text class="title" style="height: 80 ;padding: 20;color: #FFFFFF">input type = text</text>
+				</div>
+				<input type="text" placeholder="Input Text" class="input" :autofocus=true value="" @change="onchange" @input="oninput" @focus="onfocus" @blur="onblur"/>
+			</div>
+
+			<div>
+				<div style="background-color: #286090">
+					<text class="title" style="height: 80 ;padding: 20;color: #FFFFFF">input type = password</text>
+				</div>
+				<input type="password" placeholder="Input Password" class="input" @change="onchange" @input="oninput"/>
+			</div>
+
+			<div>
+				<div style="background-color: #286090">
+					<text class="title" style="height: 80 ;padding: 20;color: #FFFFFF">input type = url</text>
+				</div>
+				<input type="url" placeholder="Input URL" class="input" @change="onchange" @input="oninput"/>
+			</div>
+
+			<div>
+				<div style="background-color: #286090">
+					<text class="title" style="height: 80 ;padding: 20;color: #FFFFFF">input type = email</text>
+				</div>
+				<input type="email" placeholder="Input Email" class="input" @change="onchange" @input="oninput"/>
+			</div>
+
+			<div>
+				<div style="background-color: #286090">
+					<text class="title" style="height: 80 ;padding: 20;color: #FFFFFF">input type = tel</text>
+				</div>
+				<input type="tel" placeholder="Input Tel" class="input" @change="onchange" @input="oninput"/>
+			</div>
+
+			<div>
+				<div style="background-color: #286090">
+					<text class="title" style="height: 80 ;padding: 20;color: #FFFFFF">input type = time</text>
+				</div>
+				<input type="time" placeholder="Input Time" class="input" @change="onchange" @input="oninput"/>
+			</div>
+
+			<div>
+				<div style="background-color: #286090">
+					<text class="title" style="height: 80 ;padding: 20;color: #FFFFFF">input type = date</text>
+				</div>
+				<input type="date" placeholder="Input Date" class="input" @change="onchange" @input="oninput" max="2017-12-12" min="2015-01-01"/>
+			</div>
+
+			<div>
+				<div style="background-color: #286090">
+					<text class="title" style="height: 80 ;padding: 20;color: #FFFFFF">input return-key-type = default</text>
+				</div>
+				<input type="text" placeholder="please input" return-key-type="default" class="input" @change="onchange" @return = "onreturn" @input="oninput" />
+			</div>
+
+			<div>
+				<div style="background-color: #286090">
+					<text class="title" style="height: 80 ;padding: 20;color: #FFFFFF">input return-key-type = go</text>
+				</div>
+				<input type="text" placeholder="please input" return-key-type="go" class="input" @change="onchange" @return = "onreturn" @input="oninput" />
+			</div>
+
+			<div>
+				<div style="background-color: #286090">
+					<text class="title" style="height: 80 ;padding: 20;color: #FFFFFF">input return-key-type = next</text>
+				</div>
+				<input type="text" placeholder="please input" return-key-type="next" class="input" @change="onchange" @return = "onreturn" @input="oninput" />
+			</div>
+
+			<div>
+				<div style="background-color: #286090">
+					<text class="title" style="height: 80 ;padding: 20;color: #FFFFFF">input return-key-type = search</text>
+				</div>
+				<input type="text" placeholder="please input" return-key-type="search" class="input" @change="onchange" @return = "onreturn" @input="oninput" />
+			</div>
+
+			<div>
+				<div style="background-color: #286090">
+					<text class="title" style="height: 80 ;padding: 20;color: #FFFFFF">input return-key-type = send</text>
+				</div>
+				<input type="text" placeholder="please input" return-key-type="send" class="input" @change="onchange" @return = "onreturn" @input="oninput" />
+			</div>
+
+			<div>
+				<div style="background-color: #286090">
+					<text class="title" style="height: 80 ;padding: 20;color: #FFFFFF">input return-key-type = done</text>
+				</div>
+				<input type="text" placeholder="please input" return-key-type="done" class="input" @change="onchange" @return = "onreturn" @input="oninput" />
+			</div>
+
+
+			<div>
+				<div style="background-color: #286090">
+					<text class="title" style="height: 80 ;padding: 20;color: #FFFFFF">function focus() & blur()</text>
+				</div>
+				<div style="flex-direction: row;margin-bottom: 16px;justify-content: space-between">
+					<text class="button" value="Focus" type="primary" @click="focus"></text>
+					<text class="button" value="Blur" type="primary" @click="blur"></text>
+				</div>
+
+				<input type="text" placeholder="Input1" class="input" value="" ref="input1"/>
+			</div>
+
+
+			<div>
+				<div style="background-color: #286090">
+					<text class="title" style="height: 80 ;padding: 20;color: #FFFFFF">input selection</text>
+				</div>
+				<div style="flex-direction: row;margin-bottom: 16px;justify-content: space-between">
+					<text class="button" value="setRange" type="primary" @click="setRange"></text>
+				</div>
+				<input type="text"  ref="inputselection" placeholder="please input" value="123456789"  class="input" @change="onchange" @return = "onreturn" @input="oninput"/>
+			</div>
+
+
+
+		</scroller>
 	</div>
 </template>
 

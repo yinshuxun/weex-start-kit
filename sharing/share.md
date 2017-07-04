@@ -1,4 +1,4 @@
-## 一、weex介绍（[更加细致的文档可见官方文档](https://weex.apache.org/cn/references/)）
+## 一、weex介绍
 
 Weex 是一套简单易用的跨平台开发方案，能以 web 的开发体验构建高性能、可扩展的 native 应用。在最新的weex版本中，已经将vue作为默认的上层框架，并遵循 W3C 标准实现了统一的 JSEngine 和 DOM API，这样一来，你就可以体验到基于vue的webapp的开发体验，打造三端一致的 native 应用。
 
@@ -164,8 +164,4 @@ android native中。Weex中的JSBridge，还是比较复杂的，因为它们都
 web和weex端单独打包，web单页，weex多入口，[详情可见配置](https://github.com/yinshuxun/weex-start-kit/blob/master/_build/prod.js)
 
 
-
-### 思考：
-
-weex 和 react native 哪个比较适合我们现在的情况 .....
 

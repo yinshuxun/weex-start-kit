@@ -6,6 +6,8 @@ import mixins from "./mixins"
 
 sync(store, router)
 
+Vue.config.silent = true
+
 Vue.mixin(mixins)
 
 new Vue({

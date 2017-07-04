@@ -1,5 +1,5 @@
 <template>
-    <div class="search-wrap">
+    <div class="search-wrap" :style="{height:suggIsOpen?'496px':'auto'}">
         <div class="search-bar-wrap">
             <text class="back micon">&#xe675;</text>
             <div class="input-wrap">
@@ -21,7 +21,7 @@
 <style scoped>
     .search-wrap {
         position: absolute;
-		height: 496px;
+		/*height: 496px;*/
         top: 0;
 		flex:1;
     }
