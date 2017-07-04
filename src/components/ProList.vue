@@ -6,7 +6,7 @@
 			<text class="indicator">loading...</text>
 		</refresh>
 		<template v-if="grid === 1">
-			<cell class="pro-wrap1" v-for="{name,imgUrl,fobPrice,minOrder,componey,url},i in proList" @click="toDetail(url)">
+			<cell class="pro-wrap1" v-for="{name,imgUrl,fobPrice,minOrder,componey,url},i in proList" :key="i" @click="toDetail(url)">
 				<div class="pro1">
 					<image class="pro-img" :src="imgUrl"></image>
 					<div class="pro-detail1">
@@ -16,10 +16,10 @@
 			</cell>
 		</template>
 		<template v-if="grid === 2">
-			<cell class="pro-wrap2" v-for="p,i in proList" v-if="i % grid === 0">
+			<cell class="pro-wrap2" v-for="p,i in proList" v-if="i % grid === 0" :key="i">
 				<div
 					v-for="{name,imgUrl,fobPrice,minOrder,componey,url} in (i+1 === proList.length?[proList[i]]:[proList[i],proList[i+1]])"
-					class="pro2" @click="toDetail(url)">
+					:key="i" class="pro2" @click="toDetail(url)">
 					<image class="pro-img" :src="imgUrl"></image>
 					<div class="pro-detail2">
 						<text lines="2">{{name}}</text>
