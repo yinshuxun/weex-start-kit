@@ -1,12 +1,12 @@
 <template>
 	<scroller>
 		<panel title="color" type="primary">
-			<text class="txt">default is black</text>
-			<text class="txt" style="color:#286090">#286090</text>
-			<text class="txt" style="color:#0f0">#0f0</text>
-			<text class="txt" style="color:red">keyword</text>
-			<text class="txt" style="color:rgb(238, 162, 54)">rgb(238, 162, 54)</text>
-			<text class="txt" style="color:rgba(238, 162, 54, 0.5)">rgba(238, 162, 54, 0.5)</text>
+		<text class="txt">default is black</text>
+		<text class="txt" style="color:#286090">#286090</text>
+		<text class="txt" style="color:#0f0">#0f0</text>
+		<text class="txt" style="color:red">keyword</text>
+		<text class="txt" style="color:rgb(238, 162, 54)">rgb(238, 162, 54)</text>
+		<text class="txt" style="color:rgba(238, 162, 54, 0.5)">rgba(238, 162, 54, 0.5)</text>
 		</panel>
 		<panel title="font-size" type="primary">
 			<text class="txt" style="font-size: 32px;">32</text>

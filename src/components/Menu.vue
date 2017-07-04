@@ -16,6 +16,7 @@
         justify-content: center;
         align-items: center;
     }
+
     .menu-inr{
         width: 60px;
         height: 60px;

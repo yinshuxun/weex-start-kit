@@ -117,20 +117,27 @@ weex-pack 是初始化一个完整的 App 工程，包括 Android 和 iOS 的整
 * BOM & DOM
 
     1、不支持dom操作
-    2、仅支持部分事件类型
+    
+    2、仅支持部分事件类型，
+    
     3、没有window/location/document/history/navigator等等对象。但是提供了诸如
     WXEnvironment对象，可以获取到当前设备的屏幕或者环境信息。
+    
     4、weex SDK >= 0.10.0 的才支持事件冒泡
 
 * 布局 & css
 
     1、只支持flex
+    
     2、不允许使用id，只允许用class
+    
     3、不支持后代选择器或者继承
+    
     4、样式必须写完整 如background:red; => background-color => red;
+    
     5、不能设置背景图片
+    
     6、动态绑定class需要使用数组形式
-
 * 组件 
 
     1、只有scroll/list组件有滚动效果
@@ -157,11 +164,10 @@ weex-pack 是初始化一个完整的 App 工程，包括 Android 和 iOS 的整
     
     和如今 web 开发的最佳实践一样，Weex 会把一个页面的源代码全部编译打包成一个 JS bundle，在浏览器中，我们需要把这个 JS bundle 作为一段 <script> 载入网页，在客户端里，我们把这段 JS bundle 载入本地，并通过 WeexSDK 直接执行。
 
-android native中。Weex中的JSBridge，还是比较复杂的，因为它们都将html页面映射成了原生组件，不在基于webview提供的那几个API。它们是通过JNI，让C++作为一个中间层，实现Java与JS的绑定。这里有几篇详细的文章[weex的jsbridge实现原理](https://zhuanlan.zhihu.com/p/25326775)
+## 六、 weex项目中webpack打包的方式
 
-## 六、 weex中webpack打包的方式
-
-web和weex端单独打包，web单页，weex多入口，[详情可见配置](https://github.com/yinshuxun/weex-start-kit/blob/master/_build/prod.js)
+和传统的vue项目不同的是，weex项目中的webpack打包需要区分打包web端以及native端，在web端，直接使用vue-loader加载器，将所有组件进行单页打包即可，并且为了使用weex官方分装的组件，需要在入口安装weex-vue-render模块
+而native端是需要使用weex-loader加载器，根据多页分别进行打包。[详情可见配置](https://github.com/yinshuxun/weex-start-kit/blob/master/_build/prod.js)
 
 
 
