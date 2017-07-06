@@ -1,28 +1,34 @@
-# weex-vue-starter-kit [新增个人weex分享大纲](https://github.com/yinshuxun/weex-start-kit/blob/master/sharing/share.md)
+# weex-vue-starter-kit 
+
+[weex入门文档，个人总结](https://github.com/yinshuxun/weex-start-kit/blob/master/sharing/share.md)
 
 > 吐槽：复制粘贴了一波 weex-toolkit 的配置
 
-## 概述
-
-weexpack：方便生成 Native，启动模拟器进行效果预览，但没有对应 debug 指令，默认为 .we。
-
-weex-toolkit: 方便 debug，官方手册指定方法，默认生成 Vue，但没有办法生成 Native 安装包。
+## 运行demo
 
 ```bash
 yarn # 也可以使用npm install
 
+#run web
+npm run dev
+npm run ss(demo中search模块用到的后台服务)
+open http://0.0.0.0:8080/
+
+# run android
+weexpack platform add android
+weexpack run android
+
 # run ios
 weexpack platform add ios
 weexpack run ios
-
-# dev
-npm run dev
-open http://0.0.0.0:8080/
 ```
 
-## 显示二维码
-```bash
-open http://0.0.0.0:8080/qrcode.html
+
+
+## 手机调试
+
+```
+open http://0.0.0.0:8080/qrcode.html （使用weex-playground扫描图中二位码，即可预览demo）
 ```
 
 ## 使用说明
@@ -33,8 +39,6 @@ open http://0.0.0.0:8080/qrcode.html
 - [weex-toolkit](https://github.com/weexteam/weex-toolkit)
 
 ## 目录结构
-
-clone 之后只需要修改 src 目录下的文件即可，enjoy it!
 
 ```
 ├── yarn.lock
