@@ -13,14 +13,10 @@ export default new Router({
 	routes: [
 		...getSpecs(),
 		{name: "proDetail", path: "/proDetail", component: proDetail},
-		{
-			path: "/hello", component: (resolve) => {
-			require(['../views/hello.vue'], resolve)
-		}
-		},
+		{path: "/hello", component: Hello},
 		{path: "/listAna", component: listAna},
 		{path: "/A", component: A},
 		{path: "/B", component: B},
-		{path: "/", redirect: "/search"}
+		{path: "/", redirect: "/hello"}
 	]
 })
