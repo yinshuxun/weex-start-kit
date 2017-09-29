@@ -1,4 +1,5 @@
 # weex-vue-starter-kit 
+	这个项目是个人重构mic触屏列表页的版本
 
 [weex入门文档，个人总结](https://github.com/yinshuxun/weex-start-kit/blob/master/sharing/share.md)
 
